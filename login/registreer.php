@@ -5,6 +5,8 @@ include "functions.php";
 <!doctype html>
 <html lang="en">
 <head>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -18,7 +20,7 @@ include "functions.php";
 ?>
 
 <form method="post">
-    <div>
+    <div class="input-text">
         <label>Voornaam:
             <input type="text" name="voornaam" <?php isset_value("voornaam"); ?> required>*
         </label><br>
