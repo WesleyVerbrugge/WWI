@@ -18,12 +18,14 @@ if(isset($_POST['item_id'])){
     <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
+//
 <body>
   <table>
     <thead>
       <th>id</th>
       <th>naam</th>
       <th>price</th>
+      <th>size</th>
       <th>stock</th>
       <th>image</th>
     </thead>
@@ -32,6 +34,7 @@ if(isset($_POST['item_id'])){
         <td><?php echo $q->StockItemID ?></td>
         <td><?php echo $q->StockItemName ?></td>
         <td><?php echo $q->RecommendedRetailPrice ?></td>
+        <td><?php echo $q->Size ?></td>
         <td><?php echo $q->LastStocktakeQuantity ?></td>
         <td><img height="42" width="42" src="<?php if(empty($q->photo)){ echo "placeholder.png"; } else { echo $q->image; }?>"></td>
       </tr>
