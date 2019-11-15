@@ -8,16 +8,30 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
  
-if(isset($_GET["Term"])){
+if(isset($_GET["Term"]) && isset($_GET["Schoice"])){
     // Prepare a select statement
-    $sql = "SELECT * FROM stockitems WHERE StockItemName LIKE ?";
+    if(isset($_GET["Schoice"])) {
+      if($_GET["Schoice"] == "aname") {
+        $sql = "SELECT * FROM stockitems WHERE StockItemName LIKE ?";
+      } else {
+        $sql = "SELECT * FROM stockitems WHERE StockItemID LIKE ?";
+      }
+    }
+    
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "s", $param_term);
         
         // Set parameters
-        $param_term = '%' . $_GET["Term"] . '%';
+        if(isset($_GET["Schoice"])) {
+          if($_GET["Schoice"] == "aname") {
+            $param_term = '%' . $_GET["Term"] . '%';
+          } else {
+            $param_term = $_GET["Term"];
+          }
+        }
+        
         
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
@@ -61,7 +75,7 @@ mysqli_close($link);
 foreach($result as $row){
   echo '<tr>';
   echo '<td>' . $row['StockItemID'] . '</td>';
-  echo '<td>' . $row['StockItemName'] . '</td>';
+  echo '<td>' . $row['SearchDetails'] . '</td>';
   echo '<td><form method="post" action="showitem.php"><input type="hidden" name="item_id" value="' . $row["StockItemID"] . '"/> <input type="submit" value="bekijk item"></form></td>';
   echo '</tr>';
 }

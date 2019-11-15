@@ -11,13 +11,10 @@ $(document).ready(function(){
         /* Get input value on change */
         var Term = $(this).val();
         var resultDropdown = $(this).siblings(".result");
+        var searchchoice = $('#select').val();
         if(Term.length){
-            // $.get("backend-search.php", {term: inputVal}).done(function(data){
-            //     // Display the returned data in browser
-            //     resultDropdown.html(data);
-            // });
             var baseurl = window.location.origin;
-            var extra = '?Term=' + Term;
+            var extra = '?Term=' + Term + '&Schoice=' + searchchoice;
             window.location = baseurl + '/school/wwi/backend-search.php' + extra;
         } else{
             resultDropdown.empty();
@@ -41,6 +38,11 @@ $('input').keyup(function(e){
 <body>
     <div class="search-box">
         <input type="text" autocomplete="off" placeholder="Zoek product" />
+        <label for="select">Zoektype
+        <select id="select">
+          <option value="anumbr">Artikelnummer</option>
+          <option value="aname">Artikelnaam</option>
+        </select>
         <div class="result"></div>
     </div>
 </body>
