@@ -16,7 +16,7 @@ $(document).ready(function(){
         if(Term.length){
             var baseurl = window.location.origin;
             var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-            window.location = baseurl + '/school/wwi/backend-search.php' + extra;
+            window.location = baseurl + '/wwi/backend-search.php' + extra;
         } else{
             resultDropdown.empty();
         }
