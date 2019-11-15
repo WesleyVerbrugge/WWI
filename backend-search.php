@@ -72,12 +72,19 @@ mysqli_close($link);
 </thead>
 <tbody>
 <?php
-foreach($result as $row){
-  echo '<tr>';
-  echo '<td>' . $row['StockItemID'] . '</td>';
-  echo '<td>' . $row['SearchDetails'] . '</td>';
-  echo '<td><form method="post" action="showitem.php"><input type="hidden" name="item_id" value="' . $row["StockItemID"] . '"/> <input type="submit" value="bekijk item"></form></td>';
-  echo '</tr>';
+if(isset($_GET['azr'])){
+  $azr = $_GET['azr'];
+  $i = 1;
+  foreach($result as $row){
+    if($i <= $azr) {
+      echo '<tr>';
+      echo '<td>' . $row['StockItemID'] . '</td>';
+      echo '<td>' . $row['SearchDetails'] . '</td>';
+      echo '<td><form method="post" action="showitem.php"><input type="hidden" name="item_id" value="' . $row["StockItemID"] . '"/> <input type="submit" value="bekijk item"></form></td>';
+      echo '</tr>';
+      $i++;
+    }
+  }
 }
 ?>
 </tbody>

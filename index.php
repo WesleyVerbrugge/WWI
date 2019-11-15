@@ -12,9 +12,10 @@ $(document).ready(function(){
         var Term = $(this).val();
         var resultDropdown = $(this).siblings(".result");
         var searchchoice = $('#select').val();
+        var azr = $('#azr').val();
         if(Term.length){
             var baseurl = window.location.origin;
-            var extra = '?Term=' + Term + '&Schoice=' + searchchoice;
+            var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
             window.location = baseurl + '/school/wwi/backend-search.php' + extra;
         } else{
             resultDropdown.empty();
@@ -42,7 +43,9 @@ $('input').keyup(function(e){
         <select id="select">
           <option value="anumbr">Artikelnummer</option>
           <option value="aname">Artikelnaam</option>
-        </select>
+        </select><br><br>
+        <label for="azr">hoeveelheid zoekresultaten</label>
+        <input id="azr" type="number" value="10" />
         <div class="result"></div>
     </div>
 </body>
