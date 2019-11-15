@@ -28,6 +28,7 @@ if(isset($_POST['item_id'])){
       <th>size</th>
       <th>stock</th>
       <th>image</th>
+      <th>description</th>
     </thead>
     <tbody>
       <tr>
@@ -37,6 +38,7 @@ if(isset($_POST['item_id'])){
         <td><?php echo $q->Size ?></td>
         <td><?php echo $q->LastStocktakeQuantity ?></td>
         <td><img height="42" width="42" src="<?php if(empty($q->photo)){ echo "placeholder.png"; } else { echo $q->image; }?>"></td>
+          <td><?php echo $q->SearchDetails ?></td>
       </tr>
     </tbody>
   </table>
