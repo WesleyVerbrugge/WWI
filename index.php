@@ -41,8 +41,8 @@ $('input').keyup(function(e){
         <input type="text" autocomplete="off" placeholder="Zoek product" />
         <label for="select">Zoektype
         <select id="select">
-          <option value="anumbr">Artikelnummer</option>
-          <option value="aname">Artikelnaam</option>
+            <option value="aname">Artikelnaam</option>
+            <option value="anumbr">Artikelnummer</option>
         </select><br><br>
         <label for="azr">hoeveelheid zoekresultaten</label>
         <input id="azr" type="number" value="10" />
