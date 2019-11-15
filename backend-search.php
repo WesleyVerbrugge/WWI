@@ -8,7 +8,7 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
  
-if(isset($_REQUEST["term"])){
+if(isset($_GET["Term"])){
     // Prepare a select statement
     $sql = "SELECT * FROM stockitems WHERE StockItemName LIKE ?";
     
@@ -17,18 +17,15 @@ if(isset($_REQUEST["term"])){
         mysqli_stmt_bind_param($stmt, "s", $param_term);
         
         // Set parameters
-        $param_term = '%' . $_REQUEST["term"] . '%';
+        $param_term = '%' . $_GET["Term"] . '%';
         
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             $result = mysqli_stmt_get_result($stmt);
-            
             // Check number of rows in the result set
             if(mysqli_num_rows($result) > 0){
                 // Fetch result rows as an associative array
-                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                    echo "<p>" . $row["StockItemName"] . "<form method='post' action='showitem.php'><input type='hidden' name='item_id' value='" . $row["StockItemID"] . "'/> <input type='submit' value='bekijk item'></form>";
-                }
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             } else{
                 echo "<p>No matches found</p>";
             }
@@ -44,3 +41,32 @@ if(isset($_REQUEST["term"])){
 // close connection
 mysqli_close($link);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<table>
+<thead>
+<th>id</th>
+<th>name</th>
+<th></th>
+</thead>
+<tbody>
+<?php
+foreach($result as $row){
+  echo '<tr>';
+  echo '<td>' . $row['StockItemID'] . '</td>';
+  echo '<td>' . $row['StockItemName'] . '</td>';
+  echo '<td><form method="post" action="showitem.php"><input type="hidden" name="item_id" value="' . $row["StockItemID"] . '"/> <input type="submit" value="bekijk item"></form></td>';
+  echo '</tr>';
+}
+?>
+</tbody>
+</table>
+</body>
+</html>
