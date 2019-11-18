@@ -40,3 +40,8 @@ table, th, tr, td{
   border: 1px solid black;
   border-collapse: collapse;
 }
+
+.navbar-margin-bot {
+  margin-bottom: 1rem;
+  background-color: #b8daff;
+}
