@@ -1,4 +1,5 @@
 <?php
+include_once "header.php";
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 $link = mysqli_connect("localhost", "root", "", "wideworldimporters");
@@ -64,30 +65,55 @@ mysqli_close($link);
   <title>Document</title>
 </head>
 <body>
-<table>
-<thead>
-<th>id</th>
-<th>name</th>
-<th></th>
-</thead>
-<tbody>
+<!--<table style="border: solid;">-->
+<!--<thead>-->
+<!--<th>id</th>-->
+<!--<th>name</th>-->
+<!--<th></th>-->
+<!--</thead>-->
+<!--<tbody>-->
 <?php
-if(isset($_GET['azr'])){
-  $azr = $_GET['azr'];
-  $i = 1;
-  foreach($result as $row){
-    if($i <= $azr) {
-      echo '<tr>';
-      echo '<td>' . $row['StockItemID'] . '</td>';
-      echo '<td>' . $row['SearchDetails'] . '</td>';
-      echo '<td><form method="post" action="showitem.php"><input type="hidden" name="item_id" value="' . $row["StockItemID"] . '"/> <input type="submit" value="bekijk item"></form></td>';
-      echo '</tr>';
-      $i++;
+//if(isset($_GET['azr'])){
+//  $azr = $_GET['azr'];
+//  $i = 1;
+//  foreach($result as $row){
+//    if($i <= $azr) {
+//      echo '<tr>';
+//      echo '<td>' . $row['StockItemID'] . '</td>';
+//      echo '<td>' . $row['SearchDetails'] . '</td>';
+//      echo '<td><form method="post" action="showitem.php"><input type="hidden" name="item_id" value="' . $row["StockItemID"] . '"/> <input type="submit" value="bekijk item"></form></td>';
+//      echo '</tr>';
+//      $i++;
+//    }
+//  }
+//}
+?>
+<!--</tbody>-->
+<!--</table>-->
+<div class="container-fluid" id="container-producten">
+    <div class="row d-flex justify-content-center">
+<?php
+if (isset($_GET["azr"])){
+    $azr = $_GET["azr"];
+    $i = 1;
+    foreach ($result as $row){
+        if ($i <= $azr){
+            ?>
+            <div class="card producten" id="producten">
+                <img src="placeholder.png" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $row["StockItemName"]; ?></h5>
+                    <div class="card-tekst"><p class="card-text"><?php /*echo $row["SearchDetails"];*/echo $row["MarketingComments"]; ?></p></div>
+                    <a href="#" class="btn btn-primary koop-knop align-text-bottom">Bekijk Product</a><div class="product-price">&#8364;&nbsp;<?php echo $row["RecommendedRetailPrice"]; ?></div>
+                </div>
+            </div>
+<?php
+            $i++;
+        }
     }
-  }
 }
 ?>
-</tbody>
-</table>
+    </div>
+    </div>
 </body>
 </html>

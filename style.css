@@ -45,3 +45,39 @@ table, th, tr, td{
   margin-bottom: 1rem;
   background-color: #b8daff;
 }
+
+.producten {
+  width: 18%;
+  margin: 0;
+  display: inline-block;
+}
+
+#producten{
+  margin: 0 1rem 1rem 0;
+}
+
+.product-price {
+  margin-left: 1rem;
+  display: inline-block;
+  color: darkorange;
+  font-weight: bold;
+}
+
+
+.foto-max {
+  width: border-box;
+  height: auto;
+}
+
+.card-tekst {
+  display: inline-block;
+}
+
+.koop-knop {
+
+}
+
+#container-producten {
+  width: 80%;
+
+}
