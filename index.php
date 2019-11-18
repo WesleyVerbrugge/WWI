@@ -38,7 +38,7 @@ $('input').keyup(function(e){
 </script>
 </head>
 <body>
-    <div class="search-box">
+    <div class="search-box container-fluid">
         <input type="text" autocomplete="off" placeholder="Zoek product" />
         <label for="select">Zoektype
         <select id="select">
