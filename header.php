@@ -71,7 +71,7 @@
                 <option value="anumbr">Artikelnummer</option>
             </select><br><br>
             <label for="azr">hoeveelheid zoekresultaten&nbsp; </label>
-            <input class="form-control" id="azr" type="number" value="10" />
+            <input class="form-control" min="0" max="227" id="azr" type="number" value="10" />
         </form>
 
     </div>

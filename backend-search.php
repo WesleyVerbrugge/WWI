@@ -93,7 +93,7 @@ mysqli_close($link);
 <div class="container-fluid" id="container-producten">
     <div class="row d-flex justify-content-center">
 <?php
-if (isset($_GET["azr"])){
+if (isset($_GET["azr"]) && $_GET["azr"] < 227){
     $azr = $_GET["azr"];
     $i = 1;
     if(isset($result)) {
