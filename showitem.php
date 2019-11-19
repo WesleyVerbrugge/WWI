@@ -1,9 +1,9 @@
 <?php
 include_once('dbconnection.php');
 $defURL = "index.php";
-if(isset($_POST['item_id'])){
+if(isset($_GET['item_id'])){
   $q = Database::getDb()->prepare("SELECT * FROM stockitems JOIN stockitemholdings ON stockitems.StockItemID = stockitemholdings.StockItemID WHERE stockitems.StockItemID = ?");
-  $q->execute([$_POST['item_id']]);
+  $q->execute([$_GET['item_id']]);
   $q = $q->fetch(PDO::FETCH_OBJ);
 } else {
   header('Location: '.$defURL);
