@@ -19,7 +19,6 @@ if(isset($_GET['item_id'])){
     <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
-
 <body>
   <table>
     <thead>
