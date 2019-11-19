@@ -83,10 +83,10 @@ table, th, tr, td{
 
 }
 
-.card-body-text {
+/* .card-body-text {
   /*height: auto%;*/
-  /*position: relative;*/
-}
+  /*position: relative;
+} */
 
 #card-body {
   display: inherit;
