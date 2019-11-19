@@ -3,7 +3,7 @@ include_once('dbconnection.php');
 include "header.php";
 $defURL = "index.php";
 if(isset($_GET['item_id'])){
-  $q = Database::getDb()->prepare("SELECT * FROM stockitems JOIN stockitemholdings ON stockitems.StockItemID = stockitemholdings.StockItemID JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE stockitems.StockItemID = ?");
+  $q = Database::getDb()->prepare("SELECT * FROM stockitems left JOIN stockitemholdings ON stockitems.StockItemID = stockitemholdings.StockItemID left JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE stockitems.StockItemID = ?");
   $q->execute([$_GET['item_id']]);
   $q = $q->fetch(PDO::FETCH_OBJ);
 } else {
