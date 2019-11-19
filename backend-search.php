@@ -96,6 +96,7 @@ mysqli_close($link);
 if (isset($_GET["azr"])){
     $azr = $_GET["azr"];
     $i = 1;
+    if(isset($result)) {
     foreach ($result as $row){
         if ($i <= $azr){
             ?>
@@ -112,6 +113,10 @@ if (isset($_GET["azr"])){
             $i++;
         }
     }
+  } else {
+    $defURL = "index.php";
+    header('Location: '.$defURL);
+  }
 }
 ?>
     </div>
