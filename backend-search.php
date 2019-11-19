@@ -104,7 +104,7 @@ if (isset($_GET["azr"])){
                 <div class="card-body card-body-text row" id="card-body">
                     <h5 class="card-title"><?php echo $row["StockItemName"]; ?></h5>
                     <div class="card-tekst"><p class="card-text"><?php /*echo $row["SearchDetails"];*/echo $row["MarketingComments"]; ?></p></div>
-                    <div><a href="showitem.php?item_id=<?php echo $row["stockitemid"] ?>" class="btn btn-primary koop-knop">Bekijk Product</a><div class="product-price">&#8364;&nbsp;<?php echo $row["RecommendedRetailPrice"]; ?></div></div>
+                    <div><a href="showitem.php?item_id=<?php echo $row["StockItemID"] ?>" class="btn btn-primary koop-knop">Bekijk Product</a><div class="product-price">&#8364;&nbsp;<?php echo $row["RecommendedRetailPrice"]; ?></div></div>
                 </div>
 
             </div>
