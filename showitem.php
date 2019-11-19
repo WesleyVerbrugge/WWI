@@ -2,7 +2,7 @@
 include_once('dbconnection.php');
 $defURL = "index.php";
 if(isset($_GET['item_id'])){
-  $q = Database::getDb()->prepare("SELECT * FROM stockitems JOIN stockitemholdings ON stockitems.StockItemID = stockitemholdings.StockItemID WHERE stockitems.StockItemID = ?");
+  $q = Database::getDb()->prepare("SELECT * FROM stockitems JOIN stockitemholdings ON stockitems.StockItemID = stockitemholdings.StockItemID JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE stockitems.StockItemID = ?");
   $q->execute([$_GET['item_id']]);
   $q = $q->fetch(PDO::FETCH_OBJ);
 } else {
@@ -37,7 +37,7 @@ if(isset($_GET['item_id'])){
         <td><?php echo $q->RecommendedRetailPrice ?></td>
         <td><?php echo $q->Size ?></td>
         <td><?php echo $q->LastStocktakeQuantity ?></td>
-        <td><img height="42" width="42" src="<?php if(empty($q->photo)){ echo "placeholder.png"; } else { echo $q->image; }?>"></td>
+        <td><img height="42" width="42" src="<?php if(empty($q->image)){ echo "placeholder.png"; } else { echo $q->image; }?>"></td>
           <td><?php echo $q->SearchDetails ?></td>
       </tr>
     </tbody>
