@@ -3,7 +3,7 @@ include_once "header.php";
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 $link = mysqli_connect("localhost", "root", "", "wideworldimporters");
- 
+
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -18,8 +18,22 @@ if(isset($_GET["Term"]) && isset($_GET["Schoice"])){
         $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE StockItemID LIKE ?";
       }
     }
-    
-    
+
+    //sql kwiery voor het aantal producten
+    try {
+        $aantalproducten = NULL;
+        $sql_aantalproducten = "select distinct count(StockItemID) as items_count from stockitems where StockItemID is not null";
+
+        $result_aantalproducten = mysqli_query($link, $sql_aantalproducten);
+        if ($row_aantalproducten = mysqli_fetch_array($result_aantalproducten, MYSQLI_ASSOC)) {
+            $aantalproducten = $row_aantalproducten["items_count"];
+        }
+
+    } catch (mysqli_sql_exception $e) {
+        echo "Could not count the products $e";
+    }
+
+
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "s", $param_term);
@@ -93,7 +107,7 @@ mysqli_close($link);
 <div class="container-fluid" id="container-producten">
     <div class="row d-flex justify-content-center">
 <?php
-if (isset($_GET["azr"]) && $_GET["azr"] < 227){
+if (isset($_GET["azr"]) && $_GET["azr"] < $aantalproducten){
     $azr = $_GET["azr"];
     $i = 1;
     if(isset($result)) {
