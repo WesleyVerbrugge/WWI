@@ -11,7 +11,8 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light navbar-margin-bot">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <img height="50" width="100" src="WWI%20logo.png">
+    <a class="navbar-brand" href="#">WWI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

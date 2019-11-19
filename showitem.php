@@ -1,5 +1,6 @@
 <?php
 include_once('dbconnection.php');
+include "header.php";
 $defURL = "index.php";
 if(isset($_GET['item_id'])){
   $q = Database::getDb()->prepare("SELECT * FROM stockitems JOIN stockitemholdings ON stockitems.StockItemID = stockitemholdings.StockItemID JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE stockitems.StockItemID = ?");
@@ -18,7 +19,6 @@ if(isset($_GET['item_id'])){
     <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
-//
 <body>
   <table>
     <thead>
