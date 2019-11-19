@@ -13,9 +13,9 @@ if(isset($_GET["Term"]) && isset($_GET["Schoice"])){
     // Prepare a select statement
     if(isset($_GET["Schoice"])) {
       if($_GET["Schoice"] == "aname") {
-        $sql = "SELECT * FROM stockitems JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE StockItemName LIKE ?";
+        $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE StockItemName LIKE ?";
       } else {
-        $sql = "SELECT * FROM stockitems JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE StockItemID LIKE ?";
+        $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE StockItemID LIKE ?";
       }
     }
     
