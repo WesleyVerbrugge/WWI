@@ -62,13 +62,13 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" />
-            <label for="select">Zoektype
+            <label for="select">Zoektype&nbsp;
             <select class="form-control" id="select">
                 <option value="aname">Artikelnaam</option>
                 <option value="anumbr">Artikelnummer</option>
             </select><br><br>
-            <label for="azr">hoeveelheid zoekresultaten</label>
-            <input class="form control" id="azr" type="number" value="10" />
+            <label for="azr">hoeveelheid zoekresultaten&nbsp; </label>
+            <input class="form-control" id="azr" type="number" value="10" />
         </form>
 
     </div>
