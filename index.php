@@ -49,5 +49,4 @@ $('input').keyup(function(e){
         <input id="azr" type="number" value="10" />
         <div class="result"></div>
     </div>
-</body>
-</html>
+<?php include_once "footer.php"; ?>

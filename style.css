@@ -74,10 +74,22 @@ table, th, tr, td{
 }
 
 .koop-knop {
-
+  bottom: 0px;
+  display: inline-block;
 }
 
 #container-producten {
   width: 80%;
 
+}
+
+.card-body-text {
+  /*height: auto%;*/
+  /*position: relative;*/
+}
+
+#card-body {
+  display: inherit;
+  margin-right: 0px;
+  margin-left: 0px;
 }
