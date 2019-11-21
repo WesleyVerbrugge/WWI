@@ -16,7 +16,7 @@ if(isset($_GET['item_id'])){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 <body>
@@ -45,7 +45,7 @@ if(isset($_GET['item_id'])){
   </table>
   -->
     <div class="column1">
-        <img class="borderimage" height="600" width="600" src="placeholder.png"><BR><BR>
+        <img class="borderimage" height="600" width="600" src="images/img1.jpg"><BR><BR>
         <h1 class="margin-left">Beschrijving</h1>
         <p class="margin-left"><?php echo $q->SearchDetails . "." ?></p>
     </div>

@@ -118,7 +118,7 @@ if (isset($_GET["azr"])){
         if ($i <= $azr){
             ?>
             <div class="card producten" id="producten">
-                <img src="<?php if(empty($row['image'])){ echo "placeholder.png"; } else { echo $row['image']; } ?>" class="card-img-top" alt="Product Image">
+                <img src="<?php if(empty($row['image'])){ echo "images/img1.jpg"; } else { echo $row['image']; } ?>" class="card-img-top" alt="Product Image">
                 <div class="card-body card-body-text row" id="card-body">
                     <h5 class="card-title"><?php echo $row["StockItemName"]; ?></h5>
                     <div class="card-tekst"><p class="card-text"><?php /*echo $row["SearchDetails"];*/echo $row["MarketingComments"]; ?></p></div>
