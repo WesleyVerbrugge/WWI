@@ -1,3 +1,8 @@
+<?php
+if(isset($_GET['Term'])) {
+    $term = $_GET['Term'];
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,6 +17,12 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
+        var term = "<?php if(isset($_GET['Term'])){ echo $term; }?>";
+        if(term === undefined) {
+            // not set
+        } else {
+            $('#search').val(term);
+        }
         $('#search').bind("enterKey", function(e){
             /* Get input value on change */
             var Term = $(this).val();
@@ -40,15 +51,18 @@
     });
     });
 </script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function(){
     $('.customjsselector').on("click", function(e) {
-        var term = getUrlParameter('term');
-        var category = $(this).val;
-        };
-    })
+        var term = "<?php if(isset($_GET['Term'])) { echo $term; } ?>";
+        var category = $(this).html();
+        console.log(term);
+        console.log(category);
+        $('.customjsselector2').attr('style','display: none !important');
+        $('.customjsselector3').removeAttr('style','display: none  !important');
+    });
 });
-</script> -->
+</script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light navbar-margin-bot">

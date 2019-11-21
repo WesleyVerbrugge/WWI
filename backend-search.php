@@ -1,5 +1,9 @@
 <?php
 include_once "header.php";
+include_once 'dbconnection.php';
+$q = Database::getDb()->prepare("SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID JOIN stockitems  WHERE column_one = ? AND column_two =?");
+$q->execute([$variable1, $variable2]);
+$q = $q->fetchAll(PDO::FETCH_OBJ);
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 $link = mysqli_connect("localhost", "root", "", "wideworldimporters");
@@ -118,13 +122,53 @@ mysqli_close($link);
             <ol class="breadcrumb">
                 <?php
                 foreach ($arr_categorien as $categorie => $aantalproductcategorie) {
-                    print '<li class="customjsselector breadcrumb-item"><a href="#"> '. $categorie . '</a></li>';
+                    print '<li class="breadcrumb-item"><a class="customjsselector" href="#">'. $categorie .'</a></li>';
                 }
                 ?>
             </ol>
         </nav>
     </div>
-    <div class="row d-flex justify-content-center">
+    <div class="customjsselector2 row d-flex justify-content-center">
+        <?php
+        if (isset($_GET["azr"])) {
+            $azr = $_GET["azr"];
+            $i = 1;
+            if ($azr == "max" || $azr > $aantalproducten || $azr < 1) {
+                $azr = $aantalproducten;
+            }
+            if (isset($result)) {
+                foreach ($result as $row) {
+                    if ($i <= $azr) {
+                        ?>
+                        <div class="card producten" id="producten">
+                            <img src="<?php if (empty($row['image'])) {
+                                echo "images/img1.jpg";
+                            } else {
+                                echo $row['image'];
+                            } ?>" class="card-img-top" alt="Product Image">
+                            <div class="card-body card-body-text row" id="card-body">
+                                <h5 class="card-title"><?php echo $row["StockItemName"]; ?></h5>
+                                <div class="card-tekst"><p class="card-text"><?php /*echo $row["SearchDetails"];*/
+                                        echo $row["MarketingComments"]; ?></p></div>
+                                <div><a href="showitem.php?item_id=<?php echo $row["StockItemID"] ?>"
+                                        class="btn btn-primary koop-knop">Bekijk Product</a>
+                                    <div class="product-price">
+                                        &#8364;&nbsp;<?php echo str_replace('.', ',', $row["RecommendedRetailPrice"]); ?></div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                        $i++;
+                    }
+                }
+            } else {
+                $defURL = "index.php";
+                header('Location: ' . $defURL);
+            }
+        }
+        ?>
+    </div>
+    <div class="customjsselector3 row d-flex justify-content-center">
         <?php
         if (isset($_GET["azr"])) {
             $azr = $_GET["azr"];
