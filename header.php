@@ -57,10 +57,10 @@
                 <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="backend-search.php?Term=&Schoice=aname&azr=max">Bladeren door producten</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link disabled" href="#" hidden>Disabled</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
