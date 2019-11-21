@@ -44,14 +44,36 @@ if(isset($_GET['item_id'])){
     </tbody>
   </table>
   -->
+  <div class="floatmidcustom">
     <div class="column1">
-        <img class="borderimage" height="600" width="600" src="images/img1.jpg"><BR><BR>
-        <h1 class="margin-left">Beschrijving</h1>
-        <p class="margin-left"><?php echo $q->SearchDetails . "." ?></p>
+      <div id="carouselExampleControls" class="borderimage carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="images/img1.jpg" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="images/img1.jpg" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="images/img1.jpg" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
     </div>
     <div class="column2">
         <p class="title"><?php echo $q->StockItemName ?></p>
-        <p class="prijs">Prijs: &#8364; <?php echo $q->RecommendedRetailPrice ?></p>
+        <p class="prijs">Prijs: &#8364; <?php echo str_replace('.', ',', $q->RecommendedRetailPrice); ?></p>
+        <h1 class="margin-left">Beschrijving</h1>
+        <p class="margin-left"><?php echo $q->SearchDetails . "." ?></p>
+        <br>
         <?php
         if ($q->LastStocktakeQuantity >= 10){
             echo "<p class='voldoendevoorraad'>Op voorraad!</p>";
@@ -67,6 +89,7 @@ if(isset($_GET['item_id'])){
         <BR><BR>
         <p>&checkmark; Voor 23:59 uur besteld, morgen gratis in huis.</p>
     </div>
-
+      </div>
+    <?php include_once('footer.php') ?>
 </body>
 </html>

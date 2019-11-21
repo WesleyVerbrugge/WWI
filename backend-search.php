@@ -118,7 +118,7 @@ mysqli_close($link);
             <ol class="breadcrumb">
                 <?php
                 foreach ($arr_categorien as $categorie => $aantalproductcategorie) {
-                    print '<li class="breadcrumb-item"><a href="#"> '. $categorie . '</a></li>';
+                    print '<li class="customjsselector breadcrumb-item"><a href="#"> '. $categorie . '</a></li>';
                 }
                 ?>
             </ol>
@@ -138,7 +138,7 @@ mysqli_close($link);
                         ?>
                         <div class="card producten" id="producten">
                             <img src="<?php if (empty($row['image'])) {
-                                echo "placeholder.png";
+                                echo "images/img1.jpg";
                             } else {
                                 echo $row['image'];
                             } ?>" class="card-img-top" alt="Product Image">
@@ -149,7 +149,7 @@ mysqli_close($link);
                                 <div><a href="showitem.php?item_id=<?php echo $row["StockItemID"] ?>"
                                         class="btn btn-primary koop-knop">Bekijk Product</a>
                                     <div class="product-price">
-                                        &#8364;&nbsp;<?php echo $row["RecommendedRetailPrice"]; ?></div>
+                                        &#8364;&nbsp;<?php echo str_replace('.', ',', $row["RecommendedRetailPrice"]); ?></div>
                                 </div>
                             </div>
                         </div>
