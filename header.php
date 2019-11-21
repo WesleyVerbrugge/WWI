@@ -65,7 +65,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" />
-            <label for="select">Zoektype&nbsp;
+            <label for="select">Zoektype&nbsp;</label>
             <select class="form-control" id="select">
                 <option value="aname">Artikelnaam</option>
                 <option value="anumbr">Artikelnummer</option>
