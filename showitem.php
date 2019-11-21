@@ -87,7 +87,7 @@ if(isset($_GET['item_id'])){
         ?>
         <button type="button"  class="shopcartbutton" > In winkelwagen plaatsen</button>
         <BR><BR>
-        <p>&checkmark; Voor 23:59 uur besteld, morgen gratis in huis.</p>
+        <p>&checkmark; Voor 23:59 uur besteld, morgen in huis.</p>
     </div>
       </div>
     <?php include_once('footer.php') ?>
