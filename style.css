@@ -104,7 +104,8 @@ table, th, tr, td{
 }
 
 .column2{
-  width: 50%;
+  margin-left: 65px !important;
+  width: 30%;
   float: left;
 }
 
@@ -114,9 +115,6 @@ table, th, tr, td{
   margin-left: 20px;
 }
 
-.margin-left{
-  margin-left: 20px;
-}
 
 .title{
   font-weight: bold;
@@ -151,4 +149,29 @@ table, th, tr, td{
   text-decoration: none;
   display: inline-block;
   font-size: 24px;
+  border-radius: .30rem !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  background-size: 100%, 100%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: red;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: red;
+}
+.floatmidcustom {
+  float: middle !important;
 }

@@ -40,12 +40,22 @@
     });
     });
 </script>
+<!-- <script type="text/javascript">
+$(document).ready(function(){
+    $('.customjsselector').on("click", function(e) {
+        var term = getUrlParameter('term');
+        var category = $(this).val;
+        };
+    })
+});
+</script> -->
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light navbar-margin-bot">
     <a href="index.php">
     <img src="WWI%20logo.png" class="logo">
     </a>
+    &nbsp;
     <a class="navbar-brand" href="#">WWI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -69,7 +79,7 @@
             <select class="form-control" id="select">
                 <option value="aname">Artikelnaam</option>
                 <option value="anumbr">Artikelnummer</option>
-            </select><br><br>
+            </select>&nbsp;
             <label for="azr">hoeveelheid zoekresultaten&nbsp; </label>
             <input class="form-control" min="0" max="227" id="azr" type="number" value="10" />
         </form>
