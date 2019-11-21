@@ -63,7 +63,6 @@ table, th, tr, td{
   font-weight: bold;
 }
 
-
 .foto-max {
   width: border-box;
   height: auto;
@@ -97,4 +96,59 @@ table, th, tr, td{
 .logo {
     height: 40px;
     width: auto;
+}
+
+.column1{
+  width: 50%;
+  float: left;
+}
+
+.column2{
+  width: 50%;
+  float: left;
+}
+
+.borderimage{
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-left: 20px;
+}
+
+.margin-left{
+  margin-left: 20px;
+}
+
+.title{
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.prijs{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.voldoendevoorraad{
+  color: limegreen;
+  font-weight: bold;
+}
+
+.beperktevoorraad{
+  color: orange;
+  font-weight: bold;
+}
+
+.geenvoorraad{
+  color: red;
+  font-weight: bold;
+}
+
+.shopcartbutton{
+  background-color: limegreen;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
 }

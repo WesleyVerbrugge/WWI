@@ -152,7 +152,6 @@ mysqli_close($link);
                                         &#8364;&nbsp;<?php echo $row["RecommendedRetailPrice"]; ?></div>
                                 </div>
                             </div>
-
                         </div>
                         <?php
                         $i++;
