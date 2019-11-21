@@ -107,9 +107,12 @@ mysqli_close($link);
 <div class="container-fluid" id="container-producten">
     <div class="row d-flex justify-content-center">
 <?php
-if (isset($_GET["azr"]) && $_GET["azr"] < $aantalproducten){
+if (isset($_GET["azr"])){
     $azr = $_GET["azr"];
     $i = 1;
+    if ($azr == "max" || $azr > $aantalproducten || $azr < 1){
+        $azr = $aantalproducten;
+    }
     if(isset($result)) {
     foreach ($result as $row){
         if ($i <= $azr){
