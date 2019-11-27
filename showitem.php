@@ -9,6 +9,10 @@ if(isset($_GET['item_id'])){
 } else {
   header('Location: '.$defURL);
 }
+
+//sql query voor de korting op een prouct
+$sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE StockItemID = ?";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
