@@ -1,6 +1,7 @@
 <?php
 if(isset($_GET['Term'])) {
     $term = $_GET['Term'];
+    $azr = $_GET['azr'];
 }
 ?>
 <!doctype html>
@@ -53,16 +54,29 @@ if(isset($_GET['Term'])) {
     });
 </script>
 <script type="text/javascript">
-$(document).ready(function(){
-    $('.customjsselector').on("click", function(e) {
-        var term = "<?php if(isset($_GET['Term'])) { echo $term; } ?>";
-        var category = $(this).html();
-        console.log(term);
-        console.log(category);
-        $('.customjsselector2').attr('style','display: none !important');
-        $('.customjsselector3').removeAttr('style','display: none  !important');
+    $(document).ready(function(){
+        $('.customjsselector').on("click", function(e) {
+            var term = "<?php if(isset($_GET['Term'])) { echo $term; } ?>";
+            var category = $(this).html();
+            var azr = "<?php if(isset($_GET['azr'])) { echo $azr; } ?>";
+            var url = "category-search.php";
+            var response = '';
+            if(term === ''){
+            console.log('term is empty');
+            $.post("category-search.php",{"azr": azr, "category": category},function(data) {
+            $('.customjsselector3').html(data);
+            }, "html");
+            } else {
+            console.log('term is set');
+            $.post("category-search.php",{"azr": azr, "term" : term, "category": category},function(data) {
+            $('.customjsselector3').html(data);
+            }, "html");
+            }
+            
+            $('.customjsselector2').attr('style','display: none !important');
+            $('.customjsselector3').removeAttr('style','display: none  !important');
+        });
     });
-});
 </script>
 </head>
 <body>
