@@ -136,8 +136,8 @@ mysqli_close($link);
                 <select class="azrval form-control" id="exampleFormControlSelect1">
                   <option value="25">25</option>
                   <option value="50">50</option>
-                  <option value="50">75</option>
-                  <option value="50">100</option>
+                  <option value="75">75</option>
+                  <option value="100">100</option>
                 </select>
               </div><button class="azrselector btn btn-primary">pas toe</button></div>
     </div>
