@@ -8,6 +8,7 @@ if(isset($_GET['Term'])) {
 <html lang="en">
 <head>
 <!--bootstrap include-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
@@ -53,7 +54,7 @@ if(isset($_GET['Term'])) {
             if(Term.length){
                 var baseurl = window.location.origin;
                 var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
+                window.location = baseurl + '/wwi/backend-search.php' + extra;
             } else{
                 resultDropdown.empty();
             }
@@ -97,7 +98,7 @@ if(isset($_GET['Term'])) {
 </script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light navbar-margin-bot">
+<nav class="navbar navbar-expand-lg navbar-light navbar-margin-bot shadow bg-white">
     <a href="index.php">
     <img src="WWI%20logo.png" class="logo">
     </a>

@@ -116,10 +116,13 @@ mysqli_close($link);
 ?>
 <!--</tbody>-->
 <!--</table>-->
+<!--Back to top Knop-->
+<a id="button"></a>
+
 <div class="container-fluid" id="container-producten">
     <div class="sticky-top">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+        <nav aria-label="breadcrumb breadcrumb_div">
+            <ol class="breadcrumb bg-white shadow-lg breadcrumb-div-in">
                 <?php
                 foreach ($arr_categorien as $categorie => $aantalproductcategorie) {
                     print '<li class="breadcrumb-item"><a class="customjsselector" href="#">'. $categorie .'</a></li>';
@@ -181,5 +184,23 @@ mysqli_close($link);
     <div class="customjsselector3 row d-flex justify-content-center">
     </div>
 </div>
+<script>
+    var btn = $('#button');
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop:0}, '300');
+    });
+
+
+</script>
 </body>
 </html>
