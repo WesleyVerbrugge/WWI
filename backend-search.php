@@ -130,6 +130,16 @@ mysqli_close($link);
                 ?>
             </ol>
         </nav>
+        <div style="background-color: grey;">
+                <div class="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select class="azrval form-control" id="exampleFormControlSelect1">
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="50">75</option>
+                  <option value="50">100</option>
+                </select>
+              </div><button class="azrselector btn btn-primary">pas toe</button></div>
     </div>
     <div class="customjsselector2 row d-flex justify-content-center">
         <?php

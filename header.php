@@ -18,6 +18,25 @@ if(isset($_GET['Term'])) {
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
+    $(document).ready(function() {
+        $('.azrselector').on("click", function(e){
+            /* Get input value on change */
+            var Term = $(this).val();
+            var resultDropdown = $(this).siblings(".result");
+            var azr = $('.azrval').val();
+            if(Term.length){
+                var baseurl = window.location.origin;
+                var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
+                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
+            } else{
+                var baseurl = window.location.origin;
+                var extra = '?Term=&Schoice=aname&azr=' + azr;
+                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
+            }
+        })
+    })
+    </script>
+    <script type="text/javascript">
     $(document).ready(function(){
         var term = "<?php if(isset($_GET['Term'])){ echo $term; }?>";
         if(term === undefined) {
@@ -25,6 +44,7 @@ if(isset($_GET['Term'])) {
         } else {
             $('#search').val(term);
         }
+        
         $('#search').bind("enterKey", function(e){
             /* Get input value on change */
             var Term = $(this).val();
@@ -62,12 +82,10 @@ if(isset($_GET['Term'])) {
             var url = "category-search.php";
             var response = '';
             if(term === ''){
-            console.log('term is empty');
             $.post("category-search.php",{"azr": azr, "category": category},function(data) {
             $('.customjsselector3').html(data);
             }, "html");
             } else {
-            console.log('term is set');
             $.post("category-search.php",{"azr": azr, "term" : term, "category": category},function(data) {
             $('.customjsselector3').html(data);
             }, "html");
