@@ -17,6 +17,7 @@ if(isset($_GET['Term'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
         $('.azrselector').on("click", function(e){
