@@ -1,9 +1,9 @@
 <?php
 include_once "header.php";
 include_once 'dbconnection.php';
-$q = Database::getDb()->prepare("SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID JOIN stockitems  WHERE column_one = ? AND column_two =?");
-$q->execute([$variable1, $variable2]);
-$q = $q->fetchAll(PDO::FETCH_OBJ);
+// $q = Database::getDb()->prepare("SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID JOIN stockitems  WHERE column_one = ? AND column_two =?");
+// $q->execute([$variable1, $variable2]);
+// $q = $q->fetchAll(PDO::FETCH_OBJ);
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 $link = mysqli_connect("localhost", "root", "", "wideworldimporters");
