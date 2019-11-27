@@ -223,6 +223,7 @@ table, th, tr, td{
   cursor: pointer;
   color: #007bff;
   background-color: transparent;
+  border: 2px solid #007bff;
 }
 #button:hover::after {
   cursor: pointer;
@@ -232,7 +233,11 @@ table, th, tr, td{
 }
 
 #button:active {
-  background-color: #555;
+  background-color: #007bff;
+  color: #fff;
+}
+#button:active::after {
+  color: #fff;
 }
 #button.show {
   opacity: 1;
@@ -285,4 +290,12 @@ input[type="password"] {
   background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+#active-category {
+  font-weight: bold;
+}
+
+.alle-categorien {
+  text-align: right;
 }
