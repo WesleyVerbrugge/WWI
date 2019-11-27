@@ -130,14 +130,15 @@ mysqli_close($link);
                 ?>
             </ol>
         </nav>
+
         <div style="background-color: grey;">
                 <div class="form-group">
                 <label for="exampleFormControlSelect1">Example select</label>
                 <select class="azrval form-control" id="exampleFormControlSelect1">
-                  <option value="25">25</option>
-                  <option value="50">50</option>
-                  <option value="75">75</option>
-                  <option value="100">100</option>
+                  <option value="25"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 25){echo (" selected");}} ?>>25</option>
+                  <option value="50"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 50){echo (" selected");}} ?>>50</option>
+                  <option value="75"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 75){echo (" selected");}} ?>>75</option>
+                  <option value="100"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 100){echo (" selected");}} ?>>100</option>
                 </select>
               </div><button class="azrselector btn btn-primary">pas toe</button></div>
     </div>
