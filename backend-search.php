@@ -31,6 +31,11 @@ if (isset($_GET["Term"]) && isset($_GET["Schoice"])) {
         $arr_categorien[$row["StockGroupName"]] = $row["AantalProductCategorie"];
     }
 
+    //sql query voor de korting op een prouct
+    $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE StockItemID = ?";
+    $result_kortingPercentage = mysqli_query($link, $sql_kortingPercentage);
+
+
     //sql kwiery voor het aantal producten
     try {
         $aantalproducten = NULL;
