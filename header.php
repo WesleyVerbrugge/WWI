@@ -110,7 +110,7 @@ if(isset($_GET['Term'])) {
     </button>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav mt-2 mt-lg-0">
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -121,8 +121,14 @@ if(isset($_GET['Term'])) {
                 <a class="nav-link disabled" href="#" hidden>Disabled</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" />
+        <form class="form-inline my-lg-0 mx-auto">
+            <div class="input-group">
+                <input type="text" class="form-control rounded-left" placeholder="Zoek product" id="search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success" type="button" id="button-addon2">Zoek</button>
+                </div>
+            </div>
+<!--            <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" />-->
             <label for="select">Zoektype&nbsp;</label>
             <select class="form-control" id="select">
                 <option value="aname">Artikelnaam</option>
