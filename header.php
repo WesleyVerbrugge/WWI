@@ -49,12 +49,13 @@ if(isset($_GET['Term'])) {
         $('#search').bind("enterKey", function(e){
             /* Get input value on change */
             var Term = $(this).val();
+            console.log(Term);
+            console.log('enter clicked');
             var resultDropdown = $(this).siblings(".result");
-            var searchchoice = $('#select').val();
-            var azr = $('#azr').val();
+            var azr = 25;
             if(Term.length){
                 var baseurl = window.location.origin;
-                var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
+                var extra = '?Term=' + Term + '&azr=' + azr;
                 window.location = baseurl + '/wwi/backend-search.php' + extra;
             } else{
                 resultDropdown.empty();
@@ -129,14 +130,6 @@ if(isset($_GET['Term'])) {
                 </div>
             </div>
 <!--            <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" />-->
-            <label for="select">Zoektype&nbsp;</label>
-            <select class="form-control" id="select">
-                <option value="aname">Artikelnaam</option>
-                <option value="anumbr">Artikelnummer</option>
-            </select>&nbsp;
-            <label for="azr">hoeveelheid zoekresultaten&nbsp; </label>
-            <input class="form-control" min="0" max="227" id="azr" type="number" value="10" />
         </form>
-
     </div>
 </nav>
