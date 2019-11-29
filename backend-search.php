@@ -23,28 +23,6 @@ if (isset($_GET["Term"]) && isset($_GET["Schoice"])) {
         }
     }
 
-    //sql kwiery voor categorien
-    $sql_categorien = "SELECT s.StockGroupName, count(*) as AantalProductCategorie FROM stockgroups s JOIN stockitemstockgroups g ON s.StockGroupID=g.StockGroupID JOIN stockitems i ON g.StockItemID=i.StockItemID JOIN stockitemholdings h ON i.StockItemID=h.StockItemID group by s.StockGroupName";
-    $result_categorien = mysqli_query($link, $sql_categorien);
-    $arr_categorien = array();
-    while ($row = mysqli_fetch_array($result_categorien, MYSQLI_ASSOC)) {
-        $arr_categorien[$row["StockGroupName"]] = $row["AantalProductCategorie"];
-    }
-
-    //sql kwiery voor het aantal producten
-    try {
-        $aantalproducten = NULL;
-        $sql_aantalproducten = "select distinct count(StockItemID) as items_count from stockitems where StockItemID is not null";
-
-        $result_aantalproducten = mysqli_query($link, $sql_aantalproducten);
-        if ($row_aantalproducten = mysqli_fetch_array($result_aantalproducten, MYSQLI_ASSOC)) {
-            $aantalproducten = $row_aantalproducten["items_count"];
-        }
-
-    } catch (mysqli_sql_exception $e) {
-        echo "Could not count the products $e";
-    }
-
 
     if ($stmt = mysqli_prepare($link, $sql)) {
         // Bind variables to the prepared statement as parameters
@@ -77,6 +55,28 @@ if (isset($_GET["Term"]) && isset($_GET["Schoice"])) {
 
     // Close statement
     mysqli_stmt_close($stmt);
+}
+
+//sql kwiery voor categorien
+$sql_categorien = "SELECT s.StockGroupName, count(*) as AantalProductCategorie FROM stockgroups s JOIN stockitemstockgroups g ON s.StockGroupID=g.StockGroupID JOIN stockitems i ON g.StockItemID=i.StockItemID JOIN stockitemholdings h ON i.StockItemID=h.StockItemID group by s.StockGroupName";
+$result_categorien = mysqli_query($link, $sql_categorien);
+$arr_categorien = array();
+while ($row = mysqli_fetch_array($result_categorien, MYSQLI_ASSOC)) {
+    $arr_categorien[$row["StockGroupName"]] = $row["AantalProductCategorie"];
+}
+
+//sql kwiery voor het aantal producten
+try {
+    $aantalproducten = NULL;
+    $sql_aantalproducten = "select distinct count(StockItemID) as items_count from stockitems where StockItemID is not null";
+
+    $result_aantalproducten = mysqli_query($link, $sql_aantalproducten);
+    if ($row_aantalproducten = mysqli_fetch_array($result_aantalproducten, MYSQLI_ASSOC)) {
+        $aantalproducten = $row_aantalproducten["items_count"];
+    }
+
+} catch (mysqli_sql_exception $e) {
+    echo "Could not count the products $e";
 }
 
 // close connection
