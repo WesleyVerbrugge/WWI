@@ -136,6 +136,9 @@ if(isset($_GET['Term'])) {
             </select>&nbsp;
             <label for="azr">hoeveelheid zoekresultaten&nbsp; </label>
             <input class="form-control" min="0" max="227" id="azr" type="number" value="10" />
+            <a href="Shopping%20cart.php">
+                <img height="42" width="42" src="Shoppingcart.png">
+            </a>
         </form>
 
     </div>

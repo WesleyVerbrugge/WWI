@@ -1,11 +1,18 @@
 <?php
+session_start();
+
+//connectie db
 include_once('dbconnection.php');
+//header
 include "header.php";
 $defURL = "index.php";
+//sql query
 if(isset($_GET['item_id'])){
   $q = Database::getDb()->prepare("SELECT * FROM stockitems left JOIN stockitemholdings ON stockitems.StockItemID = stockitemholdings.StockItemID left JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE stockitems.StockItemID = ?");
   $q->execute([$_GET['item_id']]);
   $q = $q->fetch(PDO::FETCH_OBJ);
+
+
 } else {
   header('Location: '.$defURL);
 }
@@ -48,6 +55,7 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
     </tbody>
   </table>
   -->
+<!-- Foto slides -->
   <div class="floatmidcustom">
     <div class="column1">
       <div id="carouselExampleControls" class="borderimage carousel slide" data-ride="carousel">
@@ -73,11 +81,14 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
     </div>
     </div>
     <div class="column2">
+        <!-- title, prijs, beschrijving aan de rechterkant van de pagina -->
         <p class="title"><?php echo $q->StockItemName ?></p>
         <p class="prijs">Prijs: &#8364; <?php echo str_replace('.', ',', $q->RecommendedRetailPrice); ?></p>
+        <p>Verzend kosten: &#8364; 3,95</p>
         <h1 class="margin-left">Beschrijving</h1>
         <p class="margin-left"><?php echo $q->SearchDetails . "." ?></p>
         <br>
+        <!-- Vooraad variabelen -->
         <?php
         if ($q->LastStocktakeQuantity >= 10){
             echo "<p class='voldoendevoorraad'>Op voorraad!</p>";
@@ -89,9 +100,30 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
         }
 
         ?>
-        <button type="button"  class="shopcartbutton" > In winkelwagen plaatsen</button>
+        <!-- toevoegen knop -->
+        <form method="post" action="Shopping%20cart.php">
+            <input type="submit" class="shopcartbutton" name="submit" value="In winkelwagen plaatsen">
+        <?php
+        //if (isset($_POST["submit"]) && !empty($_POST["submit"])){
+//            $aantal = 4;
+//            $ID = $q->StockItemID;
+//            if (!isset($_SESSION["winkelwagen"])){
+//                $_SESSION["winkelwagen"] = array();
+//            }
+//            $_SESSION["winkelwagen"][$ID] = $aantal;
+        //}
+
+            if (!isset($_SESSION["winkelwagen"])){
+                $_SESSION["winkelwagen"] = array();
+            }
+            array_push($_SESSION["winkelwagen"], $q->StockItemID);
+        ?>
+        </form>
         <BR><BR>
-        <p>&checkmark; Voor 23:59 uur besteld, morgen in huis.</p>
+        <p>&checkmark; Voor 23:59 uur besteld, morgen in huis.<BR>
+            &checkmark; Geen bezorg kosten boven 50.<BR>
+        </p>
+
     </div>
       </div>
     <?php include_once('footer.php') ?>
