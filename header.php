@@ -32,7 +32,7 @@ if(isset($_GET['Term'])) {
             } else{
                 var baseurl = window.location.origin;
                 var extra = '?Term=&Schoice=aname&azr=' + azr;
-                window.location = baseurl + '/wwi/backend-search.php' + extra;
+                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
             }
         })
     })
@@ -55,7 +55,7 @@ if(isset($_GET['Term'])) {
             if(Term.length){
                 var baseurl = window.location.origin;
                 var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-                window.location = baseurl + '/wwi/backend-search.php' + extra;
+                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
             } else{
                 resultDropdown.empty();
             }
@@ -140,6 +140,17 @@ if(isset($_GET['Term'])) {
                 <img height="42" width="42" src="Shoppingcart.png">
             </a>
         </form>
-
+        <ul class="navbar-nav mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <?php
+                if(isset($_SESSION['user_data'])) {
+                    echo '<a class="nav-link" href="logout.php">logout</a>';
+                } else {
+                    echo '<a class="nav-link" href="login.php">login</a>';
+                }
+                ?>
+                
+            </li>
+        </ul>
     </div>
 </nav>

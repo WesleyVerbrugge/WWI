@@ -7,7 +7,7 @@ if(isset($_POST['Email'])) {
         if ($link === false) {
             die("ERROR: Could not connect. " . mysqli_connect_error());
         }
-        $sql = "SELECT * FROM people WHERE LogonName LIKE ?";
+        $sql = "SELECT * FROM users WHERE Emailadress LIKE ?";
         if ($stmt = mysqli_prepare($link, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_term);
@@ -21,7 +21,9 @@ if(isset($_POST['Email'])) {
                 if (mysqli_num_rows($result) > 0) {
                     // Fetch result rows as an associative array
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                    if($pwd == $row['HashedPassword']) {
+                    // echo(password_hash($pwd, PASSWORD_BCRYPT));
+                    // exit;
+                    if(password_verify($pwd, $row['Password'])) {
                         $message = "login succesful!";  
                         echo "<script type='text/javascript'>alert('$message');</script>";
                         session_start();
