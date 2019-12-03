@@ -137,6 +137,17 @@ if(isset($_GET['Term'])) {
             <label for="azr">hoeveelheid zoekresultaten&nbsp; </label>
             <input class="form-control" min="0" max="227" id="azr" type="number" value="10" />
         </form>
-
+        <ul class="navbar-nav mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <?php
+                if(isset($_SESSION['user_data'])) {
+                    echo '<a class="nav-link" href="logout.php">logout</a>';
+                } else {
+                    echo '<a class="nav-link" href="login.php">login</a>';
+                }
+                ?>
+                
+            </li>
+        </ul>
     </div>
 </nav>
