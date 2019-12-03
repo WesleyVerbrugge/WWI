@@ -19,10 +19,12 @@
 		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
 			  <hr class="colorgraph"><br>
 			  
-			  <input type="text" class="form-control" name="fname" placeholder="Volledige naam" required="" autofocus="" />
-              <input type="text" class="form-control" name="pname" placeholder="Naam bij voorkeur" required=""/>  
+			  <input type="text" class="form-control" name="fname" placeholder="Voornaam"" required="" autofocus="" />
+              <input type="text" class="form-control" name="bname" placeholder="Tussenvoegsels"/>  
+              <input type="text" class="form-control" name="sname" placeholder="Achternaam" required=""/>  
               <input type="text" class="form-control" name="email" placeholder="Email" required="" autofocus="" />  
-              <input type="text" class="form-control" name="pwd" placeholder="Wachtwoord" required="" autofocus="" />   	 	
+              <br>
+              <input type="password" class="form-control" name="pwd" placeholder="Wachtwoord" required="" autofocus="" />   	 	
               <input type="password" class="form-control" name="pwd2" placeholder="Bevestig wachtwoord" required=""/>   	  
 			 
 			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">register</button>  			
