@@ -17,6 +17,18 @@ $connection = mysqli_connect("localhost", "root", "", "wideworldimporters", 3306
 </head>
 
 <h2 class="margin-left">Winkelwagen</h2>
+<?php
+if (isset($_GET["LeegCart"])){
+    $_SESSION["winkelwagen"] = NULL;
+}
+?>
+    <?php
+        if (empty($_SESSION["winkelwagen"])){
+            print ("<p class=\"winkelwagenleeg\">");
+            print ("Uw winkelwagen is leeg");
+            print ("</p>");
+        } else {
+    ?>
 
 <table class="shoppingcarttable">
     <thead>
@@ -48,42 +60,65 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
         $prijs = $row["RecommendedRetailPrice"];
         ?>
         <tr>
-            <td class="column1Shoppincart borderright"><img height="75" width="75" src="placeholder.png"><?php print ($naam) ?></td>
+            <td class="column1Shoppincart borderright"><img height="75" width="75" src="images/img1.jpg"><?php print ($naam) ?></td>
             <a class="column2Shoppingcart">
             <td class="borderright tableTextRight">&#8364;<?php print (str_replace('.', ',', $prijs)) ?></td>
                 <td class="borderright tableTextRight">
-                    <form action="Shopping%20cart.php" method="get">
-                        <select>
-                            <option name="aantal" value="1">1</option>
-                            <option name="aantal" value="2">2</option>
-                            <option name="aantal3" value="3">3</option>
-                            <option name="aantal4" value="4">4</option>
-                            <option name="aantal5" value="5">5</option>
-                            <option name="aantal6" value="6">6</option>
-                            <option name="aantal7" value="7">7</option>
-                            <option name="aantal8" value="8">8</option>
-                            <option name="aantal9" value="9">9</option>
-                            <option name="aantal10" value="10">10</option>
+                    <form action="Shopping%20cart.php" method="post">
+                        <select name="aantal">
+                            <option name="1" value="1" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 1)){ print (" selected");} ?>>1</option>
+                            <option name="2" value="2" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 2)){ print (" selected");} ?>>2</option>
+                            <option name="3" value="3" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 3)){ print (" selected");} ?>>3</option>
+                            <option name="4" value="4" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 4)){ print (" selected");} ?>>4</option>
+                            <option name="5" value="5" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 5)){ print (" selected");} ?>>5</option>
+                            <option name="6" value="6" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 6)){ print (" selected");} ?>>6</option>
+                            <option name="7" value="7" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 7)){ print (" selected");} ?>>7</option>
+                            <option name="8" value="8" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 8)){ print (" selected");} ?>>8</option>
+                            <option name="9" value="9" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 9)){ print (" selected");} ?>>9</option>
+                            <option name="10" value="10" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 10)){ print (" selected");} ?>>10</option>
                         </select>
+                        <input type="submit" name="bijwerkenAantal" value="Bijwerken">
                     </form>
                     <?php
                     $aantal = 1;
-
-                    if (isset($_GET["1"]) == 1){
-                        $aantal = 1;
+                    if (isset($_POST["aantal"])) {
+                        if (($_POST["aantal"]) == 1) {
+                            $aantal = 1;
+                        }
+                        if (($_POST["aantal"]) == 2) {
+                            $aantal = 2;
+                        }
+                        if (($_POST["aantal"]) == 3) {
+                            $aantal = 3;
+                        }
+                        if (($_POST["aantal"]) == 4) {
+                            $aantal = 4;
+                        }
+                        if (($_POST["aantal"]) == 5) {
+                            $aantal = 5;
+                        }
+                        if (($_POST["aantal"]) == 6) {
+                            $aantal = 6;
+                        }
+                        if (($_POST["aantal"]) == 7) {
+                            $aantal = 7;
+                        }
+                        if (($_POST["aantal"]) == 8) {
+                            $aantal = 8;
+                        }
+                        if (($_POST["aantal"]) == 9) {
+                            $aantal = 9;
+                        }
+                        if (($_POST["aantal"]) == 10) {
+                            $aantal = 10;
+                        }
                     }
-                    if (isset($_GET["2"]) == 2){
-                        $aantal = 2;
-                    }
-
-
-                    print ($aantal);
                     ?>
                 </td>
             <td class="tableTextRight">&#8364;<?php
-                $totaal = $prijs * $aantal;
-                $eindtotaal = $eindtotaal + $totaal;
-                print (str_replace('.', ',', $totaal));
+                    $totaal = $prijs * $aantal;
+                    $eindtotaal = $eindtotaal + $totaal;
+                    print (str_replace('.', ',', $totaal));
                 ?></td>
             </a>
         </tr>
@@ -98,7 +133,16 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
         <td class="totaalbedrag tableTextRight">&#8364;<?php print (str_replace('.', ',', $eindtotaal)); ?></td>
     </tr>
 </table>
+<p>
+    <form class="margin-left" action="Shopping%20cart.php" method="get">
+        <input type="submit" name="LeegCart" value="leeg winkelmandje">
+    </form>
+</p>
 
-<input type="submit" name="LeegCart" value="leeg winkelmandje">
+
+<?php
+
+}
+?>
 
 </html>

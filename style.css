@@ -336,3 +336,9 @@ table, th, tr, td{
   text-align: right;
   padding-right: 10px;
 }
+
+.winkelwagenleeg{
+  text-align: center;
+  padding: 40px 0;
+  font-size: 50px;
+}
