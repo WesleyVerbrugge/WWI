@@ -55,7 +55,7 @@ if(isset($_GET['Term'])) {
             if(Term.length){
                 var baseurl = window.location.origin;
                 var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-                window.location = baseurl + '/wwi/backend-search.php' + extra;
+                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
             } else{
                 resultDropdown.empty();
             }
@@ -66,6 +66,26 @@ if(isset($_GET['Term'])) {
         //     $(this).parent(".result").empty();
         // });
     });
+
+    $('#button-addon2').on("click", function(e){
+            /* Get input value on change */
+            var Term = $('#search').val();
+            var searchchoice = $('#select').val();
+            var azr = $('#azr').val();
+            if(Term.length){
+                var baseurl = window.location.origin;
+                var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
+                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
+            } else{
+            }
+        
+        // Set search input value on click of result item
+        // $(document).on("click", ".result p", function(){
+        //     $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+        //     $(this).parent(".result").empty();
+        // });
+    });
+    
     $('input').keyup(function(e){
         if(e.keyCode == 13)
         {
