@@ -89,7 +89,7 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
         }
 
         ?>
-        <button type="button"  class="shopcartbutton" > In winkelwagen plaatsen</button>
+        <button type="button" class="shopcartbutton" ><a href="addtocart.php?item_id=<?php echo $_GET['item_id']; ?>&quantity=1"> In winkelwagen plaatsen</a></button>
         <BR><BR>
         <p>&checkmark; Voor 23:59 uur besteld, morgen in huis.</p>
     </div>
