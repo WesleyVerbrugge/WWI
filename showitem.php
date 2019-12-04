@@ -12,6 +12,13 @@ if(isset($_GET['item_id'])){
   $q->execute([$_GET['item_id']]);
   $q = $q->fetch(PDO::FETCH_OBJ);
 
+    if (!isset($_SESSION["winkelwagen"])) {
+        $_SESSION["winkelwagen"] = array();
+    }
+    print_r($_GET);
+    if (isset($_GET["submitWinkelwagen"])) {
+        array_push($_SESSION["winkelwagen"], $q->StockItemID);
+    }
 
 } else {
   header('Location: '.$defURL);
@@ -19,6 +26,7 @@ if(isset($_GET['item_id'])){
 
 //sql query voor de korting op een prouct
 $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE StockItemID = ?";
+
 
 ?>
 <!DOCTYPE html>
@@ -31,30 +39,6 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
   <title>Document</title>
 </head>
 <body>
- <!--
-  <table>
-    <thead>
-      <th>id</th>
-      <th>naam</th>
-      <th>price</th>
-      <th>size</th>
-      <th>stock</th>
-      <th>image</th>
-      <th>description</th>
-    </thead>
-    <tbody>
-      <tr>
-        <td><?php //echo $q->StockItemID ?></td>
-        <td><?php //echo $q->StockItemName ?></td>
-        <td><?php //echo $q->RecommendedRetailPrice ?></td>
-        <td><?php //echo $q->Size ?></td>
-        <td><?php //echo $q->LastStocktakeQuantity ?></td>
-        <td><img height="42" width="42" src="<?php //if(empty($q->image)){ echo "placeholder.png"; } else { echo $q->image; }?>"></td>
-          <td><?php //echo $q->SearchDetails ?></td>
-      </tr>
-    </tbody>
-  </table>
-  -->
 <!-- Foto slides -->
   <div class="floatmidcustom">
     <div class="column1">
@@ -101,27 +85,18 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
 
         ?>
         <!-- toevoegen knop -->
-        <form method="post" action="Shopping%20cart.php">
-            <input type="submit" class="shopcartbutton" name="submit" value="In winkelwagen plaatsen">
-        <?php
-        //if (isset($_POST["submit"]) && !empty($_POST["submit"])){
-//            $aantal = 4;
-//            $ID = $q->StockItemID;
-//            if (!isset($_SESSION["winkelwagen"])){
-//                $_SESSION["winkelwagen"] = array();
-//            }
-//            $_SESSION["winkelwagen"][$ID] = $aantal;
-        //}
-
-            if (!isset($_SESSION["winkelwagen"])){
-                $_SESSION["winkelwagen"] = array();
-            }
-            array_push($_SESSION["winkelwagen"], $q->StockItemID);
-        ?>
+        <form method="get" action="showitem.php">
+            <input type="submit" class="shopcartbutton" name="submitWinkelwagen" value="In winkelwagen plaatsen">
+            <input type="hidden" name="item_id" value="<?php print ($q->StockItemID);?>">
         </form>
+        <?php
+
+
+
+        ?>
         <BR><BR>
         <p>&checkmark; Voor 23:59 uur besteld, morgen in huis.<BR>
-            &checkmark; Geen bezorg kosten boven 50.<BR>
+            &checkmark; Geen verzend kosten boven &euro;50.<BR>
         </p>
 
     </div>

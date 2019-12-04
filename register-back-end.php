@@ -13,14 +13,11 @@ if(isset($_POST['fname'])) {
                     echo $email . " " . $pwd . ' ' . $fname . ' ' . $sname; 
                     if(!$pwd == $pwd2) {
                         echo "password is niet hetzelfde";
-                        $message = "password is niet hetzelfde";
-                        echo "<script type='text/js'>alert('" . $message . "')</script>";
                     }
-                    $pwd = password_hash($pwd, PASSWORD_BCRYPT);
+                    $pwd = password_hash($pwd, PASSWORD_DEFAULT);
                     $link = mysqli_connect("localhost", "root", "", "wideworldimporters");
                     if ($link === false) {
-                        $message = "connectie naar de database kon niet worden gemaakt";
-                        echo "<script type='text/js'>alert('" . $message . "')</script>";
+                        die("ERROR: Could not connect. " . mysqli_connect_error());
                     }
                     if(!empty($_POST['bname'])) {
                         $bname = $_POST['bname'];
@@ -30,9 +27,9 @@ if(isset($_POST['fname'])) {
                     }
                     if($stmt = mysqli_prepare($link, $sql)){
                         if (mysqli_stmt_execute($stmt)) {
-                            header('Location: login.php');
+                            echo "good";
                         } else {
-                            echo "<script type='text/js'>alert('" . $message . "')</script>";
+                            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                         }
                     }
 
