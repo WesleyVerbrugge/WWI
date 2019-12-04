@@ -36,11 +36,6 @@ body{
   background: #f2f2f2;
 }
 
-table, th, tr, td{
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
 .navbar-margin-bot {
   margin-bottom: 1.4rem;
   background-color: #b8daff;
@@ -298,4 +293,52 @@ input[type="password"] {
 
 .alle-categorien {
   text-align: right;
+}
+
+table, th, tr, td{
+  margin-left: 20px;
+  font-size: 20px;
+  border-bottom: 1px solid black;
+  border-collapse: collapse;
+}
+
+.borderright{
+  border-right: 1px solid black;
+}
+
+.column1Shoppingcart{
+  vertical-align: top;
+  width: 50%;
+}
+
+.column2Shoppingcart{
+  vertical-align: text-top;
+  width: 50%;
+}
+
+.margin-left{
+  margin-left: 20px;
+}
+
+.totaalbedrag{
+  column-span: 3;
+}
+
+.shoppingcarttable{
+  width: 95%;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-bottom: 1px solid black;
+  border-collapse: collapse;
+}
+
+.tableTextRight{
+  text-align: right;
+  padding-right: 10px;
+}
+
+.winkelwagenleeg{
+  text-align: center;
+  padding: 40px 0;
+  font-size: 50px;
 }
