@@ -8,6 +8,7 @@ if(isset($_GET['Term'])) {
 <html lang="en">
 <head>
 <!--bootstrap include-->
+    <script src="https://use.fontawesome.com/e66eadd611.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -45,7 +46,6 @@ if(isset($_GET['Term'])) {
         } else {
             $('#search').val(term);
         }
-        
         $('#search').bind("enterKey", function(e){
             /* Get input value on change */
             var Term = $(this).val();
@@ -136,10 +136,13 @@ if(isset($_GET['Term'])) {
             </select>&nbsp;
             <label for="azr">hoeveelheid zoekresultaten&nbsp; </label>
             <input class="form-control" min="0" max="227" id="azr" type="number" value="10" />
-            <a href="Shopping%20cart.php">
-                <img height="42" width="42" src="Shoppingcart.png">
-            </a>
         </form>
+        <a href="Shopping%20cart.php">
+            <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>
+        </a>
+<!--        <a>-->
+<!--        <i class="fa fa-user-circle" style="font-size: 2.5em"></i>-->
+<!--        </a>-->
         <ul class="navbar-nav mt-2 mt-lg-0">
             <li class="nav-item active">
                 <?php
