@@ -15,7 +15,7 @@ if(isset($_GET['item_id'])){
     if (!isset($_SESSION["winkelwagen"])) {
         $_SESSION["winkelwagen"] = array();
     }
-    print_r($_GET);
+//    print_r($_GET);
     if (isset($_GET["submitWinkelwagen"])) {
         array_push($_SESSION["winkelwagen"], $q->StockItemID);
     }

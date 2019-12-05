@@ -131,7 +131,7 @@ mysqli_close($link);
             </ol>
         </nav>
 
-        <div style="background-color: grey;">
+        <div style="background-color: transparent; width: 120px">
                 <div class="form-group">
                 <label for="exampleFormControlSelect1">Example select</label>
                 <select class="azrval form-control" id="exampleFormControlSelect1">
