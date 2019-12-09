@@ -13,16 +13,9 @@ if ($link === false) {
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-if (isset($_GET["Term"]) && isset($_GET["Schoice"])) {
+if (isset($_GET["Term"])) {
     // Prepare a select statement
-    if (isset($_GET["Schoice"])) {
-        if ($_GET["Schoice"] == "aname") {
-            $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE StockItemName LIKE ?";
-        } else {
-            $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID where stockitems.stockitemID like ?";
-        }
-    }
-
+    $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE StockItemName LIKE ?";
     //sql kwiery voor categorien
     $sql_categorien = "SELECT s.StockGroupName, count(*) as AantalProductCategorie FROM stockgroups s JOIN stockitemstockgroups g ON s.StockGroupID=g.StockGroupID JOIN stockitems i ON g.StockItemID=i.StockItemID JOIN stockitemholdings h ON i.StockItemID=h.StockItemID group by s.StockGroupName";
     $result_categorien = mysqli_query($link, $sql_categorien);
@@ -51,13 +44,7 @@ if (isset($_GET["Term"]) && isset($_GET["Schoice"])) {
         mysqli_stmt_bind_param($stmt, "s", $param_term);
 
         // Set parameters
-        if (isset($_GET["Schoice"])) {
-            if ($_GET["Schoice"] == "aname") {
-                $param_term = '%' . $_GET["Term"] . '%';
-            } else {
-                $param_term = $_GET["Term"];
-            }
-        }
+        $param_term = '%' . $_GET["Term"] . '%';
 
 
         // Attempt to execute the prepared statement
@@ -130,18 +117,22 @@ mysqli_close($link);
                 ?>
             </ol>
         </nav>
-
-        <div style="background-color: transparent; width: 120px">
-                <div class="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
+    </div>
+    <div style="background-color: transparent; width: 120px">
+        <div class="form-inline my-lg-0 mx-auto">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Hoeveelheid zoekresultaten</label>&nbsp;
                 <select class="azrval form-control" id="exampleFormControlSelect1">
                   <option value="25"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 25){echo (" selected");}} ?>>25</option>
                   <option value="50"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 50){echo (" selected");}} ?>>50</option>
                   <option value="75"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 75){echo (" selected");}} ?>>75</option>
                   <option value="100"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 100){echo (" selected");}} ?>>100</option>
-                </select>
-              </div><button class="azrselector btn btn-primary">pas toe</button></div>
+                </select>&nbsp;
+                <button class="azrselector btn btn-primary">pas toe</button>
+            </div>
+        </div>
     </div>
+    <br>
     <div class="customjsselector2 row d-flex justify-content-center">
         <?php
         if (isset($_GET["azr"])) {
