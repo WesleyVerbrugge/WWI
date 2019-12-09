@@ -105,7 +105,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
                     <td class="borderright tableTextRight">
                         <!-- button voor het verwijderen van een product uit de winkelwagen -->
                         <form action="shoppingcart.php" method="get">
-                            <input type="submit" name="verwijderProduct" value="">
+                            <button type="submit" class="btn btn-danger" name="verwijderProduct">-</button>
                             <input type="hidden" name="delete_item_id" value="<?php echo $row['StockItemID']; ?>">
                         </form>
                     </td>
