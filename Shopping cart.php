@@ -40,7 +40,7 @@ if (isset($_GET["LeegCart"])){
     <?php
 $sql = "SELECT * FROM stockitems left JOIN stockitemholdings ON stockitems.StockItemID = stockitemholdings.StockItemID left JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE stockitems.StockItemID = ?";
 $statement = mysqli_prepare($connection, $sql);
-
+var_dump($_SESSION['winkelwagen']);
 for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
 
     $value = $_SESSION["winkelwagen"][$i];

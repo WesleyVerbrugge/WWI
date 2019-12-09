@@ -17,13 +17,29 @@ if(isset($_GET['item_id'])){
     }
 //    print_r($_GET);
     if (isset($_GET["submitWinkelwagen"])) {
-        array_push($_SESSION["winkelwagen"], $q->StockItemID);
+      $quantity = 1;
+      
+      foreach($_SESSION['winkelwagen'] as &$wagen_item){
+          if($_GET['item_id'] == $wagen_item['item_id']){
+          $new_quantity = $wagen_item['quantity'] + $quantity;
+          $wagen_item['quantity'] = $new_quantity;
+          echo "lol";
+          $i = 1;
+        }
+      }
+      if(isset($i)){
+        if($i == 1) {
+          echo "good quantity add";
+        } 
+      } else {
+        $arraytopush = ['item_id' => $q->StockItemID, 'quantity' => $quantity];
+        array_push($_SESSION["winkelwagen"], $arraytopush);
+      }
     }
 
 } else {
   header('Location: '.$defURL);
 }
-
 //sql query voor de korting op een prouct
 $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE StockItemID = ?";
 

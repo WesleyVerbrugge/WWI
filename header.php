@@ -43,28 +43,30 @@ if(isset($_GET['Term'])) {
         if(term === undefined) {
             // not set
         } else {
-            $('#search').val(term);
+            var term = $('#search').val();
         }
-        $('#search').bind("enterKey", function(e){
-            /* Get input value on change */
-            var Term = $(this).val();
-            var resultDropdown = $(this).siblings(".result");
-            var searchchoice = $('#select').val();
-            var azr = $('#azr').val();
-            if(Term.length){
-                var baseurl = window.location.origin;
-                var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
-            } else{
-                resultDropdown.empty();
-            }
+        console.log(term);
+    //     $('#search').bind("enterKey", function(e){
+    //         /* Get input value on change */
+    //         var Term = $('#search').val();
+    //         console.log(Term);
+    //         var resultDropdown = $(this).siblings(".result");
+    //         var searchchoice = $('#select').val();
+    //         var azr = $('#azr').val();
+    //         if(Term.length){
+    //             var baseurl = window.location.origin;
+    //             var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
+    //             window.location = baseurl + '/school/wwi/backend-search.php' + extra;
+    //         } else{
+    //             resultDropdown.empty();
+    //         }
         
-        // Set search input value on click of result item
-        // $(document).on("click", ".result p", function(){
-        //     $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-        //     $(this).parent(".result").empty();
-        // });
-    });
+    //     // Set search input value on click of result item
+    //     // $(document).on("click", ".result p", function(){
+    //     //     $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+    //     //     $(this).parent(".result").empty();
+    //     // });
+    // });
 
     $('#button-addon2').on("click", function(e){
             /* Get input value on change */
@@ -147,14 +149,14 @@ if(isset($_GET['Term'])) {
                     <button class="btn btn-outline-success" type="button" id="button-addon2">Zoek</button>
                 </div>
             </div>
-<!--            <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" />-->
-            <label for="select">Zoektype&nbsp;</label>
-            <select class="form-control" id="select">
+           <!-- <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" /> -->
+            <!-- <label for="select">Zoektype&nbsp;</label> -->
+            <select style="display: none !important;" type="hidden" class="form-control" id="select">
                 <option value="aname">Artikelnaam</option>
                 <option value="anumbr">Artikelnummer</option>
             </select>&nbsp;
-            <label for="azr">hoeveelheid zoekresultaten&nbsp; </label>
-            <input class="form-control" min="0" max="227" id="azr" type="number" value="10" />
+            <!-- <label for="azr">hoeveelheid zoekresultaten&nbsp; </label> -->
+            <input type="hidden" class="form-control" min="0" max="227" id="azr" value="10" />
         </form>
         <a href="Shopping%20cart.php">
             <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>
