@@ -28,12 +28,16 @@ if(isset($_GET['item_id'])){
       }
       if(isset($i)){
         if($i == 1) {
-          echo "<script type='text/js>alert('Succesvol toegevoegd')</script>";
+          echo '<div class="alert alert-success" role="alert">
+          Item is succesvol toegevoegd!
+        </div>';
         } 
       } else {
         $arraytopush = ['item_id' => $q->StockItemID, 'quantity' => $quantity];
         array_push($_SESSION["winkelwagen"], $arraytopush);
-        echo "<script type='text/js>alert('Succesvol toegevoegd')</script>";
+        echo '<div class="alert alert-success" role="alert">
+        Item is succesvol toegevoegd!
+      </div>';
       }
     }
 
