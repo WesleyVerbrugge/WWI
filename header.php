@@ -157,7 +157,7 @@ if(isset($_GET['Term'])) {
             <label for="azr">hoeveelheid zoekresultaten&nbsp; </label>
             <input class="form-control" min="0" max="227" id="azr" type="number" value="10" />
         </form>
-        <a href="Shopping%20cart.php">
+        <a href="shoppingcart.php">
             <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>
         </a>
 <!--        <a>-->
