@@ -6,7 +6,7 @@ if(isset($_POST['fname'])) {
                 if(isset($_POST['pwd2'])) {
                     $email = $_POST['email'];
                     $pwd = $_POST['pwd'];
-                    
+                    $adress = $_POST['adress'];
                     $fname = $_POST['fname'];
                     $sname = $_POST['sname'];
                     $pwd2 = $_POST['pwd2'];
@@ -21,9 +21,9 @@ if(isset($_POST['fname'])) {
                     }
                     if(!empty($_POST['bname'])) {
                         $bname = $_POST['bname'];
-                        $sql = "INSERT INTO users (Firstname, Prepositions, LastName, Emailadress, Password) VALUES ('test', ?, ?, ?, ?)";
+                        $sql = "INSERT INTO users (Firstname, Prepositions, LastName, Emailadress, Password, Adress) VALUES ('$fname', '$bname', '$sname', '$email', '$pwd', '$adress')";
                     } else {
-                        $sql = "INSERT INTO users (Firstname, LastName, Emailadress, Password) VALUES ('$fname', '$sname', '$email', '$pwd')";
+                        $sql = "INSERT INTO users (Firstname, LastName, Emailadress, Password, Adress) VALUES ('$fname', '$sname', '$email', '$pwd', '$adress')";
                     }
                     if($stmt = mysqli_prepare($link, $sql)){
                         if (mysqli_stmt_execute($stmt)) {

@@ -23,6 +23,7 @@
               <input type="text" class="form-control rounded" name="bname" placeholder="Tussenvoegsels"/>
               <input type="text" class="form-control rounded" name="sname" placeholder="Achternaam" required=""/>
               <input type="text" class="form-control rounded" name="email" placeholder="Email" required="" autofocus="" />
+              <input type="text" class="form-control rounded" name="adress" placeholder="Adress" required"" autofocus="" />
               <hr>
               <input type="password" class="form-control rounded" name="pwd" placeholder="Wachtwoord" required="" autofocus="" />
               <input type="password" class="form-control rounded" name="pwd2" placeholder="Bevestig wachtwoord" required=""/>
