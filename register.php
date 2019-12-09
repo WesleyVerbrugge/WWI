@@ -16,7 +16,7 @@
 <div class = "container">
 	<div class="wrapper">
 		<form action="register-back-end.php" method="post" name="Login_Form" class="form-signin">       
-		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+		    <h3 class="form-signin-heading">Welcome to WideWorldImporters</h3>
 			  <br>
 			  
 			  <input type="text" class="form-control rounded" name="fname" placeholder="Voornaam"" required="" autofocus="" />
@@ -24,6 +24,7 @@
               <input type="text" class="form-control rounded" name="sname" placeholder="Achternaam" required=""/>
               <input type="text" class="form-control rounded" name="email" placeholder="Email" required="" autofocus="" />
               <input type="text" class="form-control rounded" name="adress" placeholder="Adress" required"" autofocus="" />
+              <input type="text" class="form-control rounded" name="phone" placeholder="Phone" autofocus="" />
               <hr>
               <input type="password" class="form-control rounded" name="pwd" placeholder="Wachtwoord" required="" autofocus="" />
               <input type="password" class="form-control rounded" name="pwd2" placeholder="Bevestig wachtwoord" required=""/>
