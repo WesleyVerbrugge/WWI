@@ -66,8 +66,8 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
                     foreach($_SESSION['winkelwagen'] as $item) {
                         if($item['item_id'] == $row['StockItemID']){
                             echo $item['quantity'];
-                            $aantal = $item['quantity'];
                         }
+                        $aantal = $item['quantity'];
                     }
                     ?>
                 </td>
