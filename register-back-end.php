@@ -10,7 +10,6 @@ if(isset($_POST['fname'])) {
                     $fname = $_POST['fname'];
                     $sname = $_POST['sname'];
                     $pwd2 = $_POST['pwd2'];
-                    echo $email . " " . $pwd . ' ' . $fname . ' ' . $sname; 
                     if(!$pwd == $pwd2) {
                         echo "password is niet hetzelfde";
                     }
@@ -27,7 +26,7 @@ if(isset($_POST['fname'])) {
                     }
                     if($stmt = mysqli_prepare($link, $sql)){
                         if (mysqli_stmt_execute($stmt)) {
-                            echo "good";
+                            header('Location: login.php?rs=1');
                         } else {
                             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                         }
