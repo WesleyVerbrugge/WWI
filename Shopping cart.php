@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $eindtotaal = 0;
 
 include "header.php";
@@ -64,53 +63,11 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
             <a class="column2Shoppingcart">
             <td class="borderright tableTextRight">&#8364;<?php print (str_replace('.', ',', $prijs)) ?></td>
                 <td class="borderright tableTextRight">
-                    <form action="Shopping%20cart.php" method="post">
-                        <select name="aantal">
-                            <option name="1" value="1" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 1)){ print (" selected");} ?>>1</option>
-                            <option name="2" value="2" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 2)){ print (" selected");} ?>>2</option>
-                            <option name="3" value="3" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 3)){ print (" selected");} ?>>3</option>
-                            <option name="4" value="4" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 4)){ print (" selected");} ?>>4</option>
-                            <option name="5" value="5" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 5)){ print (" selected");} ?>>5</option>
-                            <option name="6" value="6" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 6)){ print (" selected");} ?>>6</option>
-                            <option name="7" value="7" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 7)){ print (" selected");} ?>>7</option>
-                            <option name="8" value="8" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 8)){ print (" selected");} ?>>8</option>
-                            <option name="9" value="9" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 9)){ print (" selected");} ?>>9</option>
-                            <option name="10" value="10" <?php if ((isset($_POST["aantal"])) && ($_POST["aantal"] == 10)){ print (" selected");} ?>>10</option>
-                        </select>
-                        <input type="submit" name="bijwerkenAantal" value="Bijwerken">
-                    </form>
-                    <?php
-                    $aantal = 1;
-                    if (isset($_POST["aantal"])) {
-                        if (($_POST["aantal"]) == 1) {
-                            $aantal = 1;
-                        }
-                        if (($_POST["aantal"]) == 2) {
-                            $aantal = 2;
-                        }
-                        if (($_POST["aantal"]) == 3) {
-                            $aantal = 3;
-                        }
-                        if (($_POST["aantal"]) == 4) {
-                            $aantal = 4;
-                        }
-                        if (($_POST["aantal"]) == 5) {
-                            $aantal = 5;
-                        }
-                        if (($_POST["aantal"]) == 6) {
-                            $aantal = 6;
-                        }
-                        if (($_POST["aantal"]) == 7) {
-                            $aantal = 7;
-                        }
-                        if (($_POST["aantal"]) == 8) {
-                            $aantal = 8;
-                        }
-                        if (($_POST["aantal"]) == 9) {
-                            $aantal = 9;
-                        }
-                        if (($_POST["aantal"]) == 10) {
-                            $aantal = 10;
+                    <?php 
+                    foreach($_SESSION['winkelwagen'] as $item) {
+                        if($item['item_id'] == $row['StockItemID']){
+                            echo $item['quantity'];
+                            $aantal = $item['quantity'];
                         }
                     }
                     ?>

@@ -23,17 +23,17 @@ if(isset($_GET['item_id'])){
           if($_GET['item_id'] == $wagen_item['item_id']){
           $new_quantity = $wagen_item['quantity'] + $quantity;
           $wagen_item['quantity'] = $new_quantity;
-          echo "lol";
           $i = 1;
         }
       }
       if(isset($i)){
         if($i == 1) {
-          echo "good quantity add";
+          echo "<script type='text/js>alert('Succesvol toegevoegd')</script>";
         } 
       } else {
         $arraytopush = ['item_id' => $q->StockItemID, 'quantity' => $quantity];
         array_push($_SESSION["winkelwagen"], $arraytopush);
+        echo "<script type='text/js>alert('Succesvol toegevoegd')</script>";
       }
     }
 
