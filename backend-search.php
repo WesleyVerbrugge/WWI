@@ -130,19 +130,20 @@ mysqli_close($link);
                 ?>
             </ol>
         </nav>
-
-        <div style="background-color: transparent; width: 120px">
-                <form action="#" class="form-inline my-lg-0 mx-auto">
-                <div class="form-group">
-                <label for="exampleFormControlSelect1">Hoeveelheid zoekresultaten</label>
+    </div>
+    <div style="background-color: transparent; width: 120px">
+        <form action="#" class="form-inline my-lg-0 mx-auto">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Hoeveelheid zoekresultaten</label>&nbsp;
                 <select class="azrval form-control" id="exampleFormControlSelect1">
                   <option value="25"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 25){echo (" selected");}} ?>>25</option>
                   <option value="50"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 50){echo (" selected");}} ?>>50</option>
                   <option value="75"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 75){echo (" selected");}} ?>>75</option>
                   <option value="100"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 100){echo (" selected");}} ?>>100</option>
-                </select>
-              <button class="azrselector btn btn-primary">pas toe</button></div></div>
-              </form>
+                </select>&nbsp;
+                <button class="azrselector btn btn-primary">pas toe</button>
+            </div>
+        </form>
     </div>
     <div class="customjsselector2 row d-flex justify-content-center">
         <?php
