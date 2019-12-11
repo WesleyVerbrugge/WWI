@@ -1,6 +1,8 @@
 <?php
 if(isset($_GET['Term'])) {
     $term = $_GET['Term'];
+}
+if (isset($_GET["azr"])){
     $azr = $_GET['azr'];
 }
 ?>

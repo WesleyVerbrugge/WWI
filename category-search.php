@@ -33,7 +33,7 @@ if(!empty($category)) {
     JOIN stockitems i ON g.StockItemID=i.StockItemID
     JOIN stockitemholdings h ON i.StockItemID=h.StockItemID WHERE s.StockGroupName LIKE ?";
 }
-    if (is_numeric($_POST["term"])){
+    if ((!empty($_POST["term"])) && is_numeric($_POST["term"])){
         $sql = "SELECT * FROM stockgroups s
     JOIN stockitemstockgroups g ON s.StockGroupID=g.StockGroupID 
     JOIN stockitems i ON g.StockItemID=i.StockItemID

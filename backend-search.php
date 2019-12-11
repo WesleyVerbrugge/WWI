@@ -13,19 +13,20 @@ if ($link === false) {
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
+//sql kwiery voor categorien
+$sql_categorien = "SELECT s.StockGroupName, count(*) as AantalProductCategorie FROM stockgroups s JOIN stockitemstockgroups g ON s.StockGroupID=g.StockGroupID JOIN stockitems i ON g.StockItemID=i.StockItemID JOIN stockitemholdings h ON i.StockItemID=h.StockItemID group by s.StockGroupName";
+$result_categorien = mysqli_query($link, $sql_categorien);
+$arr_categorien = array();
+while ($row = mysqli_fetch_array($result_categorien, MYSQLI_ASSOC)) {
+    $arr_categorien[$row["StockGroupName"]] = $row["AantalProductCategorie"];
+}
+
 if (isset($_GET["Term"])) {
     if (is_numeric($_GET["Term"])){
         $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID where stockitems.stockitemID like ?";
     } else {
         // Prepare a select statement
         $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE StockItemName LIKE ?";
-    }
-    //sql kwiery voor categorien
-    $sql_categorien = "SELECT s.StockGroupName, count(*) as AantalProductCategorie FROM stockgroups s JOIN stockitemstockgroups g ON s.StockGroupID=g.StockGroupID JOIN stockitems i ON g.StockItemID=i.StockItemID JOIN stockitemholdings h ON i.StockItemID=h.StockItemID group by s.StockGroupName";
-    $result_categorien = mysqli_query($link, $sql_categorien);
-    $arr_categorien = array();
-    while ($row = mysqli_fetch_array($result_categorien, MYSQLI_ASSOC)) {
-        $arr_categorien[$row["StockGroupName"]] = $row["AantalProductCategorie"];
     }
 
     //sql kwiery voor het aantal producten
