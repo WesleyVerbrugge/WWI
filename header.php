@@ -28,11 +28,11 @@ if(isset($_GET['Term'])) {
             if(Term.length){
                 var baseurl = window.location.origin;
                 var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
+                window.location = baseurl + '/wwi/backend-search.php' + extra;
             } else{
                 var baseurl = window.location.origin;
                 var extra = '?Term=&Schoice=aname&azr=' + azr;
-                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
+                window.location = baseurl + '/wwi/backend-search.php' + extra;
             }
         })
     })
@@ -56,7 +56,7 @@ if(isset($_GET['Term'])) {
     //         if(Term.length){
     //             var baseurl = window.location.origin;
     //             var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-    //             window.location = baseurl + '/school/wwi/backend-search.php' + extra;
+    //             window.location = baseurl + '/wwi/backend-search.php' + extra;
     //         } else{
     //             resultDropdown.empty();
     //         }
@@ -76,7 +76,7 @@ if(isset($_GET['Term'])) {
             if(Term.length){
                 var baseurl = window.location.origin;
                 var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
+                window.location = baseurl + '/wwi/backend-search.php' + extra;
             } else{
             }
         
@@ -122,7 +122,7 @@ if(isset($_GET['Term'])) {
 <body>
 <nav class="navbar navbar-expand-lg navbar-light navbar-margin-bot shadow bg-white">
     <a href="index.php">
-    <img src="WWI%20logo.png" class="logo">
+    <img src="WWI%20logo.png" class="logo" alt="logo">
     </a>
     &nbsp;
     <a class="navbar-brand" href="#">WWI</a>
@@ -156,7 +156,7 @@ if(isset($_GET['Term'])) {
                 <option value="anumbr">Artikelnummer</option>
             </select>&nbsp;
             <!-- <label for="azr">hoeveelheid zoekresultaten&nbsp; </label> -->
-            <input type="hidden" class="form-control" min="0" max="227" id="azr" value="10" />
+            <input type="hidden" class="form-control" min="0" max="227" id="azr" value="25" />
         </form>
         <a href="shoppingcart.php">
             <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>

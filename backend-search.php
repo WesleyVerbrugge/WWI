@@ -14,8 +14,12 @@ if ($link === false) {
 }
 
 if (isset($_GET["Term"])) {
-    // Prepare a select statement
-    $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE StockItemName LIKE ?";
+    if (is_numeric($_GET["Term"])){
+        $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID where stockitems.stockitemID like ?";
+    } else {
+        // Prepare a select statement
+        $sql = "SELECT * FROM stockitems LEFT JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE StockItemName LIKE ?";
+    }
     //sql kwiery voor categorien
     $sql_categorien = "SELECT s.StockGroupName, count(*) as AantalProductCategorie FROM stockgroups s JOIN stockitemstockgroups g ON s.StockGroupID=g.StockGroupID JOIN stockitems i ON g.StockItemID=i.StockItemID JOIN stockitemholdings h ON i.StockItemID=h.StockItemID group by s.StockGroupName";
     $result_categorien = mysqli_query($link, $sql_categorien);
@@ -44,8 +48,11 @@ if (isset($_GET["Term"])) {
         mysqli_stmt_bind_param($stmt, "s", $param_term);
 
         // Set parameters
-        $param_term = '%' . $_GET["Term"] . '%';
-
+        if (is_numeric($_GET["Term"])){
+            $param_term = $_GET["Term"];
+        } else {
+            $param_term = '%' . $_GET["Term"] . '%';
+        }
 
         // Attempt to execute the prepared statement
         if (mysqli_stmt_execute($stmt)) {
