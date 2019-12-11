@@ -33,6 +33,12 @@ if(!empty($category)) {
     JOIN stockitems i ON g.StockItemID=i.StockItemID
     JOIN stockitemholdings h ON i.StockItemID=h.StockItemID WHERE s.StockGroupName LIKE ?";
 }
+    if (is_numeric($_POST["term"])){
+        $sql = "SELECT * FROM stockgroups s
+    JOIN stockitemstockgroups g ON s.StockGroupID=g.StockGroupID 
+    JOIN stockitems i ON g.StockItemID=i.StockItemID
+    JOIN stockitemholdings h ON i.StockItemID=h.StockItemID WHERE s.StockGroupName LIKE ? AND i.StockItemID LIKE ?";
+    }
 }
 // Check connection
 if ($link === false) {
@@ -40,7 +46,11 @@ if ($link === false) {
 }
 if ($stmt = mysqli_prepare($link, $sql)) {
     if(isset($_POST['term'])){
+        if (is_numeric($_POST["term"])){
+            $term = $_POST["term"];
+        } else {
         $term = '%' . $_POST['term'] . '%';
+        }
     }
     $category = '%' . $_POST['category'] . '%';
     // Bind variables to the prepared statement as parameters
