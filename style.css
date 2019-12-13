@@ -299,12 +299,7 @@ input[type="password"] {
 table, th, tr, td{
   margin-left: 20px;
   font-size: 20px;
-  border-bottom: 1px solid black;
-  border-collapse: collapse;
-}
 
-.borderright{
-  border-right: 1px solid black;
 }
 
 .column1Shoppingcart{
@@ -329,8 +324,7 @@ table, th, tr, td{
   width: 95%;
   margin-left: 20px;
   margin-right: 20px;
-  border-bottom: 1px solid black;
-  border-collapse: collapse;
+
 }
 
 .tableTextRight{

@@ -48,10 +48,10 @@ if (isset($_GET["LeegCart"])){
 <table class="shoppingcarttable">
     <thead>
         <th>Product</th>
-        <th>Prijs Per Stuk</th>
-        <th>Aantal</th>
-        <th>Verwijderen</th>
-        <th>Totaal</th>
+        <th class="tableTextRight">Prijs Per Stuk</th>
+        <th class="tableTextRight">Aantal</th>
+        <th class="tableTextRight">Verwijderen</th>
+        <th class="tableTextRight">Totaal</th>
     </thead>
     <?php
     //sql query product informatie
@@ -85,11 +85,11 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
         <tbody>
         <tr>
             <!-- foto van product -->
-            <td class="column1Shoppincart borderright"><img height="75" width="75" src="images/img1.jpg"><?php print ($naam) ?></td>
+            <td class="column1Shoppincart"><img height="75" width="75" src="images/img1.jpg"><?php print ($naam) ?></td>
             <a class="column2Shoppingcart">
                 <!-- prijs per stuk met een str_replace om een . naar een , te veranderen -->
-            <td class="borderright tableTextRight">&#8364;<?php print (str_replace('.', ',', $prijs)) ?></td>
-                <td class="borderright tableTextRight">
+            <td class="tableTextRight">&#8364;<?php print (str_replace('.', ',', $prijs)) ?></td>
+                <td class="tableTextRight">
                     <!-- form om de aantallen te veranderen -->
                     <?php 
                     foreach($_SESSION['winkelwagen'] as $item) {
@@ -102,7 +102,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
                     }
                     ?>
                 </td>
-                    <td class="borderright tableTextRight">
+                    <td class="tableTextRight">
                         <!-- button voor het verwijderen van een product uit de winkelwagen -->
                         <form action="shoppingcart.php" method="get">
                             <button type="submit" class="btn btn-danger" name="verwijderProduct">-</button>
@@ -118,11 +118,8 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
             </a>
         </tr>
       <?php
-    // verwijderd product als knop voor verwijderen is ingedrukt
     }
-    if (isset($_GET["verwijderProduct"])){
-        unset($_SESSION["winkelwagen"][$row["StockItemID"]]);
-    }
+
 
     if ($eindtotaal < 50){
         $eindtotaal = $eindtotaal + 3.95;
@@ -132,7 +129,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
        <td></td>
         <td></td>
         <td></td>
-        <td class="tableTextRight borderright">Verzend kosten:</td>
+        <td class="tableTextRight">Verzend kosten:</td>
         <td class="tableTextRight">&euro;3.95</td>
     </tr>
 
@@ -144,7 +141,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
        <td></td>
         <td></td>
         <td></td>
-        <td class="tableTextRight borderright">Verzend kosten:</td>
+        <td class="tableTextRight">Verzend kosten:</td>
         <td class="tableTextRight">&euro;0,00</td>
     </tr>
         <?php
@@ -154,7 +151,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
         <td></td>
         <td></td>
         <td></td>
-        <td class="borderright tableTextRight">Totaal bedrag:</td>
+        <td class="tableTextRight">Totaal bedrag:</td>
         <td class="totaalbedrag tableTextRight">&#8364;<?php
 
             //print het te betalen bedrag voor de gehele winkelwagen
