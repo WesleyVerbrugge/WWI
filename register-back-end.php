@@ -29,6 +29,7 @@ if(isset($_POST['fname'])) {
                             }
                         } else {
                             if(!empty($_POST['phone'])){
+                                $phone = $_POST['phone'];
                                 $sql = "INSERT INTO users (Firstname, LastName, Emailadress, Password, Adress, Phone) VALUES ('$fname', '$sname', '$email', '$pwd', '$adress', '$phone')";
                             } else {
                                 $sql = "INSERT INTO users (Firstname, LastName, Emailadress, Password, Adress) VALUES ('$fname', '$sname', '$email', '$pwd', '$adress')";

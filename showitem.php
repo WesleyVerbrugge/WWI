@@ -12,6 +12,10 @@ if(isset($_GET['item_id'])){
   $q->execute([$_GET['item_id']]);
   $q = $q->fetch(PDO::FETCH_OBJ);
 
+  $q2 = Database::getDb()->prepare("select * from reviews join users on users.UserID = reviews.user_id where product_id like ?");
+  $q2->execute([$_GET['item_id']]);
+  $q2 = $q2->fetchAll(PDO::FETCH_OBJ);
+
     if (!isset($_SESSION["winkelwagen"])) {
         $_SESSION["winkelwagen"] = array();
     }
@@ -118,9 +122,31 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
         <p>&checkmark; Voor 23:59 uur besteld, morgen in huis.<BR>
             &checkmark; Geen verzend kosten boven &euro;50.<BR>
         </p>
+        <div class="container">
+            <?php
+            $limit = 2;
+            for ($i = 1; $i <= $limit; $i++){
+                echo "<div class='row'>";
+            foreach ($q2 as $review){
+                echo "<div class='col-sm'>";
+            }
+            echo "</div>";
+            }
 
+            ?>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+        </div>
     </div>
       </div>
+
     <?php include_once('footer.php') ?>
 </body>
 </html>
