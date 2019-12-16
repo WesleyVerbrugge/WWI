@@ -122,6 +122,9 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
         <p>&checkmark; Voor 23:59 uur besteld, morgen in huis.<BR>
             &checkmark; Geen verzend kosten boven &euro;50.<BR>
         </p>
+        <br>
+        <h2>Reviews</h2>
+        <hr>
         <div class="container">
             <?php
             $limit = 2;
@@ -132,13 +135,15 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
                 echo '
                 <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h6 class="card-subtitle mb-2 text-muted">' . $q2->FirstName . $q2->LastName . '</h6>
-                    <p class="card-text">' . $q2->review . '</p>
+                    <h6 class="card-subtitle mb-2 text-muted">' . $review->Firstname . " " . $review->LastName . '</h6>
+                    <p class="card-text">' . $review->review . '</p>
                 </div>
                 </div>
+                </div>
+         
                 ';
             }
-            echo "</div>";
+            echo "</div><br>";
             }
 
             ?>
