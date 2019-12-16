@@ -128,9 +128,9 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
         <div class="container">
             <?php
             $limit = 2;
-            for ($i = 1; $i <= $limit; $i++){
-                echo "<div class='row'>";
             foreach ($q2 as $review){
+                echo "<div class='row'>";
+                for ($i = 1; $i <= $limit; $i++){
                 echo "<div class='col-sm'>";
                 echo '
                 <div class="card" style="width: 18rem;">
