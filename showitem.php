@@ -16,6 +16,12 @@ if(isset($_GET['item_id'])){
   $q2->execute([$_GET['item_id']]);
   $q2 = $q2->fetchAll(PDO::FETCH_OBJ);
 
+  // $q3 = Database::GetDb()->prepare("SELECT COUNT(*) FROM reviews WHERE product_id like ?");
+  // $q3->execute([$_GET['item_id']]);
+  // $q3 = $q3->fetch(PDO::FETCH_OBJ);
+
+  $q3 = count($q2);
+
     if (!isset($_SESSION["winkelwagen"])) {
         $_SESSION["winkelwagen"] = array();
     }
@@ -128,9 +134,10 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
         <div class="container">
             <?php
             $limit = 2;
-            foreach ($q2 as $review){
+            $rownum = $q3 / $limit;
+            for ($i = 1; $i <= $rownum; $i++){
                 echo "<div class='row'>";
-                for ($i = 1; $i <= $limit; $i++){
+                foreach ($q2 as $review){
                 echo "<div class='col-sm'>";
                 echo '
                 <div class="card" style="width: 18rem;">
