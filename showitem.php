@@ -59,18 +59,16 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css">
-  <title>Document</title>
-</head>
 <body>
 <!-- Foto slides -->
   <div class="floatmidcustom">
+    <?php 
+    if(isset($_GET['rws'])) {
+      echo '<div class="alert alert-success" role="alert">
+      Review added succesfuly!
+    </div>';
+    }
+      ?>
     <div class="column1">
       <div id="carouselExampleControls" class="borderimage carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -117,7 +115,7 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
         <!-- toevoegen knop -->
         <form method="get" action="showitem.php">
             <input type="submit" class="shopcartbutton" name="submitWinkelwagen" value="In winkelwagen plaatsen">
-            <input type="hidden" name="item_id" value="<?php print ($q->StockItemID);?>">
+            <input type="hidden" id="item_id" name="item_id" value="<?php print ($q->StockItemID);?>">
         </form>
         <?php
 
@@ -131,31 +129,64 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
         <br>
         <h2>Reviews</h2>
         <hr>
-        <div class="container">
-            <?php
-            $limit = 2;
-            $rownum = ceil($q3 / $limit);
-            for ($i = 1; $i <= $rownum; $i++){
-                echo "<div class='row'>";
-                foreach ($q2 as $review){
-                echo "<div class='col-sm'>";
-                echo '
-                <div class="card">
-                <div class="card-body">
-                    <h6 class="card-subtitle mb-2 text-muted">' . $review->Firstname . " " . $review->LastName . '</h6>
-                    <p class="card-text">' . $review->review . '</p>
-                </div>
-                </div>
-                </div>
-         
-                ';
-            }
-            echo "</div><br>";
-            }
 
-            ?>
+        <div class="container">
+              <?php
+              foreach($q2 as $review) {
+                ?>
+                <div class="row">
+                  <div class="col-sm">
+
+                  <div class="card">
+                    <div class="card-body">
+                      <h6 class="card-subtitle mb-2 text-muted"><?php echo $review->Firstname . " " . $review->LastName;?></h6>
+                      <p class="card-text"><?php echo $review->review; ?></p>
+                    </div>
+                  </div>
+
+                  </div>  
+                </div>
+                <br>
+                <?php
+              }
+              ?>
+              <?php if(isset($_SESSION['user_data'])) {?>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Write a review
+              </button>
+              <?php } else { 
+                echo '<div class="alert alert-info" role="alert">
+                Login to write a review
+              </div>';
+               } ?>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Schrijf je review</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                    <form method="POST" action="showitem.php"></form>
+                      <div class="form-group">
+                        <label class="col-form-label" for="review">Review:</label>
+                        <input type="text" id="review" name="review">
+                      </div>
+                      <input type="hidden" id="item_id" name="item_id" value="<?php echo $_GET['item_id']; ?>">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" id="savereview" class="btn btn-primary">Save review</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
         </div>
-    </div>
+
       </div>
 
     <?php include_once('footer.php') ?>
