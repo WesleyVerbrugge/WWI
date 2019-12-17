@@ -39,7 +39,7 @@ if (isset($_GET["azr"])){
     $(document).ready(function() {
         $('.azrselector').on("click", function(e){
             /* Get input value on change */
-            var Term = $(this).val();
+            var Term = $('#search').val();
             var azr = $('.azrval').val();
             if(Term.length){
                 var baseurl = window.location.origin;
