@@ -172,8 +172,8 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
                     <div class="modal-body">
                     <form method="POST" action="showitem.php"></form>
                       <div class="form-group">
-                        <label class="col-form-label" for="review">Review:</label>
-                          <textarea id="review" name="review"></textarea>
+<!--                        <label class="col-form-label" for="review">Review:</label>-->
+                          <textarea class="form-control" id="review" name="review" style="height: 9rem"></textarea>
                       </div>
                       <input type="hidden" id="item_id" name="item_id" value="<?php echo $_GET['item_id']; ?>">
                     </div>

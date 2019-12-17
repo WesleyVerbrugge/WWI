@@ -157,7 +157,7 @@ if (isset($_GET["azr"])){
         </ul>
 
 <!--        <form class="form-inline my-lg-0 mx-auto">-->
-            <div class="input-group" style="width: 25%">
+            <div class="input-group" style="width: 25%; margin: auto; min-width: 250px">
                 <input type="text" class="form-control rounded-left" value="<?php if (isset($_GET["Term"])){print($_GET["Term"]);} ?>" placeholder="Zoek product" id="search" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-outline-success" type="button" id="button-addon2">Zoek</button>
@@ -174,7 +174,7 @@ if (isset($_GET["azr"])){
 <!--        </form>-->
 
 
-        <a href="shoppingcart.php">
+        <a href="shoppingcart.php" style="margin-left: auto">
             <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>
         </a>
         <!--        <a>-->
