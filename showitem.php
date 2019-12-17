@@ -68,6 +68,11 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
       Review added succesfuly!
     </div>';
     }
+    if(isset($_GET['rrs'])) {
+      echo '<div class="alert alert-success" role="alert">
+      Review removed succesfully
+    </div>';
+    }
       ?>
     <div class="column1">
       <div id="carouselExampleControls" class="borderimage carousel slide" data-ride="carousel">
@@ -140,7 +145,10 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
                   <div class="card">
                     <div class="card-body">
                       <h6 class="card-subtitle mb-2 text-muted"><?php echo $review->Firstname . " " . $review->LastName;?></h6>
-                      <p class="card-text"><?php echo htmlspecialchars($review->review, ENT_QUOTES, 'UTF-8'); ?></p>
+                      <p class="card-text"><?php echo $review->review; ?></p>
+                      <?php if($_SESSION['user_data']['is_admin'] == 1){
+                       echo '<a href="delete-review.php?id=' . $review->id . '&item_id=' . $_GET['item_id'] . '"class="btn btn-danger">Verwijder review</a>';
+                       }?>
                     </div>
                   </div>
 
