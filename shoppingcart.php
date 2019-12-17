@@ -43,6 +43,7 @@ if (isset($_GET["LeegCart"])){
             print ("Uw winkelwagen is leeg");
             print ("</p>");
         } else {
+
     ?>
 
 <table class="shoppingcarttable">
@@ -124,6 +125,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
     if ($eindtotaal < 50){
         $eindtotaal = $eindtotaal + 3.95;
 
+
         ?>
     <tr>
        <td></td>
@@ -142,7 +144,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
         <td></td>
         <td></td>
         <td class="tableTextRight">Verzend kosten:</td>
-        <td class="tableTextRight">&euro;0,00</td>
+        <td class="tableTextRight text-success">Free Shipping</td>
     </tr>
         <?php
     }
