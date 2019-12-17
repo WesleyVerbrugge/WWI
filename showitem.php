@@ -39,14 +39,14 @@ if(isset($_GET['item_id'])){
       if(isset($i)){
         if($i == 1) {
           echo '<div class="alert alert-success" role="alert">
-          Product has succesfully been added to shopping cart!
+          Product has succesfully been added to your <a href="shoppingcart.php">shopping cart</a> !
         </div>';
         } 
       } else {
         $arraytopush = ['item_id' => $q->StockItemID, 'quantity' => $quantity];
         array_push($_SESSION["winkelwagen"], $arraytopush);
         echo '<div class="alert alert-success" role="alert">
-        Product has succesfully been added to shopping cart!
+        Product has succesfully been added to your <a href="shoppingcart.php">shopping cart</a> !
       </div>';
       }
     }
@@ -100,8 +100,8 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
     <div class="column2">
         <!-- title, prijs, beschrijving aan de rechterkant van de pagina -->
         <p class="title"><?php echo $q->StockItemName ?></p>
-        <p class="prijs">Prijs: &#8364; <?php echo $q->RecommendedRetailPrice; ?></p>
-        <p>Shipping costs: &#8364; 3.95</p>
+        <p class="prijs">Price: &#8364; <?php echo $q->RecommendedRetailPrice; ?></p>
+<!--        <p>Shipping costs: &#8364; 3.95</p>-->
         <h1 class="margin-left">Product description</h1>
         <p class="margin-left"><?php echo $q->SearchDetails . "." ?></p>
         <br>

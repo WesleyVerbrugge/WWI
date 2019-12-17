@@ -89,7 +89,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
             <!-- foto van product -->
             <td data-th="Product">
                 <div class="row">
-                    <div class="col-sm-2 hidden-xs"><img height="100px" src="images/img1.jpg" alt="Product Image" class="img-responsive"/></div>
+                    <div class="col-sm-2 hidden-xs"><a href="showitem.php?item_id=<?php print($ItemID); ?>"><img height="100px" src="images/img1.jpg" alt="Product Image" class="img-responsive"/></a></div>
                     <div class="col-sm-10">
                         <h4 class="nomargin"><a class="stretched-link text-dark" href="showitem.php?item_id=<?php print($ItemID); ?>"><?php print ($naam); ?></a></h4>
                         <p><?php if (!empty($beschrijving)){print $beschrijving;} ?></p>
@@ -115,14 +115,14 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
                     }
 
                     ?>"></div>
-                    <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                    <button style="margin-top: .1rem" class="btn btn-info btn"><i class="fa fa-refresh"></i></button>
                 </form>
                 </td>
             <td data-th="Subtotal" class="text-center">&#8364;<?php print(str_replace('.', ',',$totaal = $prijs * $_SESSION["winkelwagen"][$i]["quantity"])); $eindtotaal += $totaal; ?></td>
 
 <td>
     <form action="shoppingcart.php" method="get">
-        <button type="submit" class="btn btn-danger" name="verwijderProduct"><i class="fa fa-trash-o"></i></button>
+        <button type="submit" class="btn-danger btn" name="verwijderProduct"><i class="fa fa-trash-o"></i></button>
         <input type="hidden" name="delete_item_id" value="<?php echo $row['StockItemID']; ?>">
     </form>
 </td>

@@ -173,7 +173,7 @@ if (isset($_GET["azr"])){
 <!--        </form>-->
 
 
-        <a href="shoppingcart.php" style="margin-left: auto; z-index: 1">
+        <a href="shoppingcart.php" style="z-index: 1">
             <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>
             <span style="z-index: 2" class="badge badge-pill badge-primary"><?php if (isset($_SESSION["winkelwagen"])){ print (count($_SESSION["winkelwagen"])); } ?></span>
         </a>
