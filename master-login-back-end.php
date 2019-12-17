@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(isset($_SESSION['user_data'])) {
+    if($_SESSION['user_data']['is_admin'] == 1){
+        header('Location: index.php?mls=1');
+    } else {
+        header('Location: index.php?mls=2');
+    }
+}
 if(isset($_POST['Email'])) {
     if(isset($_POST['Password'])) {
         $email = $_POST['Email'];

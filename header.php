@@ -28,7 +28,7 @@ if (isset($_GET["azr"])){
             var item_id = $('#item_id').val();
             var baseurl = window.location.origin;
             var extra = '?review=' + review + '&item_id=' + item_id;
-            window.location = baseurl + '/wwi/savereview.php' + extra;
+            window.location = baseurl + '/school/wwi/savereview.php' + extra;
     });
   })
   </script>
@@ -41,11 +41,11 @@ if (isset($_GET["azr"])){
             if(Term.length){
                 var baseurl = window.location.origin;
                 var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-                window.location = baseurl + '/wwi/backend-search.php' + extra;
+                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
             } else{
                 var baseurl = window.location.origin;
                 var extra = '?Term=&Schoice=aname&azr=' + azr;
-                window.location = baseurl + '/wwi/backend-search.php' + extra;
+                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
             }
         })
     })
@@ -89,7 +89,7 @@ if (isset($_GET["azr"])){
             if(Term.length){
                 var baseurl = window.location.origin;
                 var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-                window.location = baseurl + '/wwi/backend-search.php' + extra;
+                window.location = baseurl + '/school/wwi/backend-search.php' + extra;
             } else{
             }
         
