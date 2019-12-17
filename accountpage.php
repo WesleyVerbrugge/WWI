@@ -19,11 +19,12 @@ try {
     <title>Account pagina</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
+<body>
+<div class="container">
 <!-- header pagina -->
 <h2 class="margin-left">Account pagina</h2>
 
-    <div class="columnAccount">
+    <!-- <div class="columnAccount"> -->
 
 <?php
     if (isset($_SESSION["user_data"])) {
@@ -50,18 +51,16 @@ try {
         $firstNameUser = $resultsUser["Firstname"];
         $lastNameUser = $resultsUser["LastName"];
         $email = $resultsUser["Emailadress"];
-        $country = $resultsUser["CountryName"];
-        $city = $resultsUser["CityName"];
-        $street = $resultsUser["StreetName"];
-        $housenumber = $resultsUser["HouseNumber"];
-        $postalcode = $resultsUser["PostalCode"];
-        $phone = $resultsUser["PhoneNumber"];
+        $adress = $resultsUser["Adress"];
+        $phone = $resultsUser["Phone"];
 
         print ($firstNameUser . " " . $lastNameUser . "<BR>");
-        print ($street . " " . $housenumber . " " . $city . " " . $country . " " . $postalcode . "<BR>");
+        print ($adress . "<BR>");
         print ($email . "<BR>");
         print ($phone);
     }
 ?>
+<!-- </div> -->
 </div>
+</body>
 </html>
