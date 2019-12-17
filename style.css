@@ -337,3 +337,20 @@ table, th, tr, td{
   padding: 40px 0;
   font-size: 50px;
 }
+
+.columnOrder {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.columnAccount{
+  float: left;
+  width: 50%;
+  margin-left: 20px;
+}

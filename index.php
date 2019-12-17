@@ -9,7 +9,7 @@ if(isset($_GET['ls'])){
 ?>
 <body>
 <div class="container-fluid">
-    <div class="jumbotron"><h3 class="display-2">Welkom&nbsp; <?php if(isset($_SESSION['user_data'])){ print($_SESSION['user_data']['Firstname']);} ?></h3></div>
+    <div class="jumbotron"><h3 class="display-2">Welkom&nbsp;<?php if(isset($_SESSION['user_data'])){ print($_SESSION['user_data']['Firstname']);} ?></h3></div>
 </div>
 </body>
 <?php include_once "footer.php"; ?>
