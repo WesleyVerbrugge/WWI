@@ -32,16 +32,16 @@ if(isset($_POST['fname'])) {
                                             $bname = $_POST['bname'];
                                             if (!empty($_POST['phone'])) {
                                                 $phone = $_POST['phone'];
-                                                $sql = "INSERT INTO users (Firstname, Prepositions, LastName, Emailadress, Country, City, Password, Adress, Housenumber, Postalcode, Phone) VALUES ('$fname', '$bname', '$sname', '$country', '$city', '$email', '$pwd', '$adress', '$housenumber', '$postalcode', '$phone')";
+                                                $sql = "INSERT INTO users (Firstname, Prepositions, LastName, Emailadress, Country, City, Password, Adress, Housenumber, Postalcode, Phone) VALUES ('$fname', '$bname', '$sname', '$email', '$country', '$city', '$pwd', '$adress', '$housenumber', '$postalcode', '$phone')";
                                             } else {
-                                                $sql = "INSERT INTO users (Firstname, Prepositions, LastName, Emailadress, Country, City, Password, Adress, Housenumber, Postalcode) VALUES ('$fname', '$bname', '$sname', '$country', '$city', '$email', '$pwd', '$adress', '$housenumber', '$postalcode')";
+                                                $sql = "INSERT INTO users (Firstname, Prepositions, LastName, Emailadress, Country, City, Password, Adress, Housenumber, Postalcode) VALUES ('$fname', '$bname', '$sname', '$email', '$country', '$city', '$pwd', '$adress', '$housenumber', '$postalcode')";
                                             }
                                         } else {
                                             if (!empty($_POST['phone'])) {
                                                 $phone = $_POST['phone'];
-                                                $sql = "INSERT INTO users (Firstname, LastName, Emailadress, Country, City, Password, Adress, Housenumber, Postalcode, Phone) VALUES ('$fname', '$sname', '$country', '$city', '$email', '$pwd', '$adress', '$housenumber', '$postalcode', '$phone')";
+                                                $sql = "INSERT INTO users (Firstname, LastName, Emailadress, Country, City, Password, Adress, Housenumber, Postalcode, Phone) VALUES ('$fname', '$sname', '$email', '$country', '$city', '$pwd', '$adress', '$housenumber', '$postalcode', '$phone')";
                                             } else {
-                                                $sql = "INSERT INTO users (Firstname, LastName, Emailadress, Country, City, Password, Adress, Housenumber, Postalcode) VALUES ('$fname', '$sname', '$country', '$city', '$email', '$pwd', '$adress', '$housenumber', '$postalcode')";
+                                                $sql = "INSERT INTO users (Firstname, LastName, Emailadress, Country, City, Password, Adress, Housenumber, Postalcode) VALUES ('$fname', '$sname', '$email', '$country', '$city', '$pwd', '$adress', '$housenumber', '$postalcode')";
                                             }
                                         }
                                         if ($stmt = mysqli_prepare($link, $sql)) {
