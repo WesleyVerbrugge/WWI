@@ -6,8 +6,12 @@ $totaalBedrag = 0;
 include "header.php";
 include "dbconnection.php";
 // database connectie
-$connection = mysqli_connect("localhost", "root", "", "wideworldimporters", 3306);
-
+try {
+    $connection = mysqli_connect("localhost", "root", "", "wideworldimporters", 3306);
+} catch (mysqli_sql_exception $e){
+    print ("Geen verbinding gemaakt <BR>");
+    print ($e);
+}
 $sql = "SELECT * FROM stockitems left JOIN stockitemholdings ON stockitems.StockItemID = stockitemholdings.StockItemID left JOIN images_stockitems ON images_stockitems.StockItemID = stockitems.StockItemID WHERE stockitems.StockItemID = ?";
 $statement = mysqli_prepare($connection, $sql);
 
@@ -22,6 +26,10 @@ $statement = mysqli_prepare($connection, $sql);
 
 <!-- header pagina -->
 <h2 class="margin-left">Bestelling</h2>
+
+<div class="row">
+    <div class="columnOrder">
+
 
 <table>
     <thead>
@@ -65,6 +73,9 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
     $totaalBedrag = $totaalBedrag + $bedrag;
 }
 
+    mysqli_stmt_close($statement);
+    mysqli_free_result($results);
+
 if ($totaalBedrag < 50){
     $totaalBedrag = $totaalBedrag + 3.95;
 
@@ -93,5 +104,55 @@ if ($totaalBedrag < 50){
         <td class="tableTextRight">&euro;<?php print (str_replace('.', ',',$totaalBedrag))?></td>
     </tr>
     </table>
+        </div>
+
+    <div class="columnOrder">
+
+    <?php
+    if (isset($_SESSION["user_data"])) {
+        $sqlUserData = "SELECT * FROM users LEFT JOIN addressdata ON addressdata.UserID = users.UserID WHERE users.UserID = ?";
+        //$sqlUserData = "SELECT * FROM user_adress WHERE user_id = ?";
+        $statementUserData = mysqli_prepare($connection, $sqlUserData);
+
+        if (!$statementUserData){
+            die("mysqli error: " . mysqli_error($connection));
+        }
+        $valueUser = $_SESSION["UserID"][0];
+
+        //vult het itemID in bij de sql query
+        mysqli_stmt_bind_param($statementUserData, "i", $valueUser);
+        if ( !mysqli_stmt_execute($statementUserData) ) {
+            die( 'stmt error: '.mysqli_stmt_error($statementUserData) );
+        }
+
+        mysqli_stmt_execute($statementUserData);
+        $resultsUserdata = mysqli_stmt_get_result($statementUserData);
+        //met $row kun je nu de item informatie ophalen
+        $resultsUser = mysqli_fetch_array($resultsUserdata);
+
+        $firstNameUser = $resultsUser["Firstname"];
+        $lastNameUser = $resultsUser["LastName"];
+        $email = $resultsUser["Emailadress"];
+        $country = $resultsUser["CountryName"];
+        $city = $resultsUser["CityName"];
+        $street = $resultsUser["StreetName"];
+        $housenumber = $resultsUser["HouseNumber"];
+        $postalcode = $resultsUser["PostalCode"];
+        $phone = $resultsUser["PhoneNumber"];
+
+        print ($firstNameUser . " " . $lastNameUser . "<BR>");
+        print ($street . " " . $housenumber . " " . $city . " " . $country . " " . $postalcode . "<BR>");
+        print ($email . "<BR>");
+        print ($phone);
+
+
+    } else {
+        print ("You need to login bofore you are able to place an order. <BR><BR>");
+        print ("<a href='login.php'>To login page</a>");
+    }
+
+    ?>
+    </div>
+</div>
 
 </html>
