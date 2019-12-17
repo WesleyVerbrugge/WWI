@@ -27,6 +27,8 @@ if(isset($_POST['Email'])) {
                         $message = "login succesful!";  
                         echo "<script type='text/javascript'>alert('$message');</script>";
                         session_start();
+                        $_SESSION["UserID"] = array();
+                        array_push($_SESSION["UserID"], $row["UserID"]);
                         $_SESSION['user_data'] = $row;
                         $newURL = "/index.php";
                         header("Location: index.php?ls=1");

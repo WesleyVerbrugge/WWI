@@ -338,6 +338,7 @@ table, th, tr, td{
   font-size: 50px;
 }
 
+
 /*css winkelwagen*/
 .table>tbody>tr>td, .table>tfoot>tr>td{
   vertical-align: middle;
@@ -448,4 +449,21 @@ input[type=number]
   position: absolute;
   bottom: -1px;
   height: 50%;
+
+.columnOrder {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.columnAccount{
+  float: left;
+  width: 50%;
+  margin-left: 20px;
+
 }

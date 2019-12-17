@@ -19,18 +19,22 @@
 		    <h3 class="form-signin-heading">Welcome to WideWorldImporters</h3>
 			  <br>
 			  
-			  <input type="text" class="form-control rounded" name="fname" placeholder="Voornaam"" required="" autofocus="" />
-              <input type="text" class="form-control rounded" name="bname" placeholder="Tussenvoegsels"/>
-              <input type="text" class="form-control rounded" name="sname" placeholder="Achternaam" required=""/>
+			  <input type="text" class="form-control rounded" name="fname" placeholder="First name"" required="" autofocus="" />
+              <input type="text" class="form-control rounded" name="bname" placeholder="Prepositions"/>
+              <input type="text" class="form-control rounded" name="sname" placeholder="Last name" required=""/>
               <input type="text" class="form-control rounded" name="email" placeholder="Email" required="" autofocus="" />
+              <input type="text" class="form-control rounded" name="country" placeholder="Country" required=""/>
+              <input type="text" class="form-control rounded" name="city" placeholder="City" required=""/>
               <input type="text" class="form-control rounded" name="adress" placeholder="Adress" required"" autofocus="" />
+              <input type="text" class="form-control rounded" name="housenumber" placeholder="Housenumber" required=""/>
+              <input type="text" class="form-control rounded" name="postalcode" placeholder="Postalcode" required=""/>
               <input type="text" class="form-control rounded" name="phone" placeholder="Phone" autofocus="" />
               <hr>
-              <input type="password" class="form-control rounded" name="pwd" placeholder="Wachtwoord" required="" autofocus="" />
-              <input type="password" class="form-control rounded" name="pwd2" placeholder="Bevestig wachtwoord" required=""/>
+              <input type="password" class="form-control rounded" name="pwd" placeholder="Password" required="" autofocus="" />
+              <input type="password" class="form-control rounded" name="pwd2" placeholder="Confirm password" required=""/>
 			 
 			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">register</button>
-            <a href="login.php" class="btn-block" style="text-align: center">Heb je al een bestaand account?</a>
+            <a href="login.php" class="btn-block" style="text-align: center">Already got an account?</a>
 		</form>			
 	</div>
 </div>

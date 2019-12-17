@@ -39,14 +39,14 @@ if(isset($_GET['item_id'])){
       if(isset($i)){
         if($i == 1) {
           echo '<div class="alert alert-success" role="alert">
-          Item is succesvol toegevoegd!
+          Product has succesfully been added to shopping cart!
         </div>';
         } 
       } else {
         $arraytopush = ['item_id' => $q->StockItemID, 'quantity' => $quantity];
         array_push($_SESSION["winkelwagen"], $arraytopush);
         echo '<div class="alert alert-success" role="alert">
-        Item is succesvol toegevoegd!
+        Product has succesfully been added to shopping cart!
       </div>';
       }
     }
@@ -100,26 +100,26 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
     <div class="column2">
         <!-- title, prijs, beschrijving aan de rechterkant van de pagina -->
         <p class="title"><?php echo $q->StockItemName ?></p>
-        <p class="prijs">Prijs: &#8364; <?php echo str_replace('.', ',', $q->RecommendedRetailPrice); ?></p>
-        <p>Verzend kosten: &#8364; 3,95</p>
-        <h1 class="margin-left">Beschrijving</h1>
+        <p class="prijs">Prijs: &#8364; <?php echo $q->RecommendedRetailPrice; ?></p>
+        <p>Shipping costs: &#8364; 3.95</p>
+        <h1 class="margin-left">Product description</h1>
         <p class="margin-left"><?php echo $q->SearchDetails . "." ?></p>
         <br>
         <!-- Vooraad variabelen -->
         <?php
         if ($q->LastStocktakeQuantity >= 10){
-            echo "<p class='voldoendevoorraad'>Op voorraad!</p>";
+            echo "<p class='voldoendevoorraad'>In stock!</p>";
         }
         if (($q->LastStocktakeQuantity > 0) && ($q->LastStocktakeQuantity <10)){
-            echo ("<p class='beperktevoorraad'>Beperkt op voorraad, bestel snel! Nog maar $q->LastStocktakeQuantity beschikbaar.</p>");
+            echo ("<p class='beperktevoorraad'>Limited stock, order fast! Only $q->LastStocktakeQuantity remaining!.</p>");
         } if ($q->LastStocktakeQuantity <= 0) {
-            echo ("<p class='geenvoorraad'>Uitverkocht!</p>");
+            echo ("<p class='geenvoorraad'>Sold out!</p>");
         }
 
         ?>
         <!-- toevoegen knop -->
         <form method="get" action="showitem.php">
-            <input type="submit" class="shopcartbutton" name="submitWinkelwagen" value="In winkelwagen plaatsen">
+            <input type="submit" class="shopcartbutton" name="submitWinkelwagen" value="Move to shopping cart">
             <input type="hidden" id="item_id" name="item_id" value="<?php print ($q->StockItemID);?>">
         </form>
         <?php
@@ -128,8 +128,8 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
 
         ?>
         <BR><BR>
-        <p>&checkmark; Voor 23:59 uur besteld, morgen in huis.<BR>
-            &checkmark; Geen verzend kosten boven &euro;50.<BR>
+        <p>&checkmark; Orderd before 23.59, tomorrow at home.<BR>
+            &checkmark; No shipping costs above &euro;50.-<BR>
         </p>
         <br>
         <h2>Reviews</h2>

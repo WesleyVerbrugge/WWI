@@ -21,12 +21,12 @@ if(isset($_GET['delete_item_id'])){
 <html>
 
 <head>
-    <title>Winkelwagen</title>
+    <title>Shopping cart</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <!-- header pagina -->
-<h2 class="margin-left">Winkelwagen</h2>
+<h2 class="margin-left">Shopping cart</h2>
 <?php
 
 //checked of knop voor legen winkelwagen geset is
@@ -43,7 +43,6 @@ if (isset($_GET["LeegCart"])){
             print ("Uw winkelwagen is leeg");
             print ("</p>");
         } else {
-
     ?>
             <table id="cart" class="table table-hover table-condensed" style="margin-left: 0">
                 <thead>
