@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 if(isset($_GET['Term'])) {
     $term = $_GET['Term'];
 }
@@ -174,8 +177,9 @@ if (isset($_GET["azr"])){
 <!--        </form>-->
 
 
-        <a href="shoppingcart.php" style="margin-left: auto">
+        <a href="shoppingcart.php" style="margin-left: auto; z-index: 1">
             <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>
+            <span style="z-index: 2" class="badge badge-pill badge-primary"><?php if (isset($_SESSION["winkelwagen"])){ print (count($_SESSION["winkelwagen"])); } ?></span>
         </a>
         <!--        <a>-->
         <!--        <i class="fa fa-user-circle" style="font-size: 2.5em"></i>-->
