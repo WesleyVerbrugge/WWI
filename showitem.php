@@ -146,9 +146,13 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
                     <div class="card-body">
                       <h6 class="card-subtitle mb-2 text-muted"><?php echo $review->Firstname . " " . $review->LastName;?></h6>
                       <p class="card-text"><?php echo $review->review; ?></p>
-                      <?php if($_SESSION['user_data']['is_admin'] == 1){
-                       echo '<a href="delete-review.php?id=' . $review->id . '&item_id=' . $_GET['item_id'] . '"class="btn btn-danger">Verwijder review</a>';
-                       }?>
+                      <?php
+                      if(isset($_SESSION['user_data'])){
+                      if($_SESSION['user_data']['is_admin'] == 1){
+                            echo '<a href="delete-review.php?id=' . $review->id . '&item_id=' . $_GET['item_id'] . '"class="btn btn-danger">Verwijder review</a>';
+                      }
+                      }
+                       ?>
                     </div>
                   </div>
 
