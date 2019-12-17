@@ -144,14 +144,15 @@ if (isset($_GET["azr"])){
                 <a class="nav-link disabled" href="#" hidden>Disabled</a>
             </li>
         </ul>
-        <form class="form-inline my-lg-0 mx-auto">
-            <div class="input-group">
+
+<!--        <form class="form-inline my-lg-0 mx-auto">-->
+            <div class="input-group" style="width: 25%">
                 <input type="text" class="form-control rounded-left" value="<?php if (isset($_GET["Term"])){print($_GET["Term"]);} ?>" placeholder="Zoek product" id="search" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-outline-success" type="button" id="button-addon2">Zoek</button>
                 </div>
             </div>
-           <!-- <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" /> -->
+            <!-- <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" /> -->
             <!-- <label for="select">Zoektype&nbsp;</label> -->
             <select style="display: none !important;" type="hidden" class="form-control" id="select">
                 <option value="aname">Artikelnaam</option>
@@ -159,13 +160,15 @@ if (isset($_GET["azr"])){
             </select>&nbsp;
             <!-- <label for="azr">hoeveelheid zoekresultaten&nbsp; </label> -->
             <input type="hidden" class="form-control" min="0" max="227" id="azr" value="25" />
-        </form>
+<!--        </form>-->
+
+
         <a href="shoppingcart.php">
             <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>
         </a>
-<!--        <a>-->
-<!--        <i class="fa fa-user-circle" style="font-size: 2.5em"></i>-->
-<!--        </a>-->
+        <!--        <a>-->
+        <!--        <i class="fa fa-user-circle" style="font-size: 2.5em"></i>-->
+        <!--        </a>-->
         <ul class="navbar-nav mt-2 mt-lg-0">
             <li class="nav-item active">
                 <?php
@@ -175,8 +178,10 @@ if (isset($_GET["azr"])){
                     echo '<a class="nav-link" href="login.php">login</a>';
                 }
                 ?>
-                
+
             </li>
         </ul>
+
     </div>
+
 </nav>
