@@ -6,6 +6,17 @@ if(isset($_GET['ls'])){
     Login succesful!
   </div>';
 }
+if(isset($_GET['mls'])){
+    if($_GET['mls'] == 1) {
+        echo '<div class="alert alert-success" role="alert">
+        Master Login succesful!
+        </div>';
+    } else {
+        echo '<div class="alert alert-danger" role="alert">
+        Master Login denied!
+        </div>';
+    }
+}
 ?>
 <body>
 <div class="container-fluid">
