@@ -28,7 +28,7 @@ if (isset($_GET["azr"])){
             var item_id = $('#item_id').val();
             var baseurl = window.location.origin;
             var extra = '?review=' + review + '&item_id=' + item_id;
-            window.location = baseurl + '/school/wwi/savereview.php' + extra;
+            window.location = baseurl + '/wwi/savereview.php' + extra;
     });
   })
   </script>

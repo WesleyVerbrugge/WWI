@@ -140,7 +140,7 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
                   <div class="card">
                     <div class="card-body">
                       <h6 class="card-subtitle mb-2 text-muted"><?php echo $review->Firstname . " " . $review->LastName;?></h6>
-                      <p class="card-text"><?php echo $review->review; ?></p>
+                      <p class="card-text"><?php echo htmlspecialchars($review->review, ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                   </div>
 
@@ -156,7 +156,7 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
               </button>
               <?php } else { 
                 echo '<div class="alert alert-info" role="alert">
-                Login to write a review
+                <a href="login.php">Login</a> to write a review
               </div>';
                } ?>
               <!-- Modal -->
@@ -173,7 +173,7 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
                     <form method="POST" action="showitem.php"></form>
                       <div class="form-group">
                         <label class="col-form-label" for="review">Review:</label>
-                        <input type="text" id="review" name="review">
+                          <textarea id="review" name="review"></textarea>
                       </div>
                       <input type="hidden" id="item_id" name="item_id" value="<?php echo $_GET['item_id']; ?>">
                     </div>
