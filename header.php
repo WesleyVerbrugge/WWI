@@ -22,6 +22,17 @@ if (isset($_GET["azr"])){
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+  $(document).ready( function() {
+    $('#savereview').on("click", function(e){
+            var review = $('#review').val();
+            var item_id = $('#item_id').val();
+            var baseurl = window.location.origin;
+            var extra = '?review=' + review + '&item_id=' + item_id;
+            window.location = baseurl + '/school/wwi/savereview.php' + extra;
+    });
+  })
+  </script>
+    <script type="text/javascript">
     $(document).ready(function() {
         $('.azrselector').on("click", function(e){
             /* Get input value on change */
