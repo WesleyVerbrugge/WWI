@@ -181,6 +181,15 @@ if (isset($_GET["azr"])){
             <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>
             <span style="z-index: 2" class="badge badge-pill badge-primary"><?php if (isset($_SESSION["winkelwagen"])){ print (count($_SESSION["winkelwagen"])); } ?></span>
         </a>
+        <?php 
+        if(isset($_SESSION['user_data'])) {
+        echo '
+        <a href="accountpage.php" style="margin-left: 10px;">
+        <i class="fa fa-user-circle" style="font-size: 2.7em; color: black;"></i>
+        </a>
+        ';
+        }
+        ?>
         <!--        <a>-->
         <!--        <i class="fa fa-user-circle" style="font-size: 2.5em"></i>-->
         <!--        </a>-->

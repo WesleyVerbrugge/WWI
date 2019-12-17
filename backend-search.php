@@ -135,6 +135,7 @@ mysqli_close($link);
                   <option value="50"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 50){echo (" selected");}} ?>>50</option>
                   <option value="75"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 75){echo (" selected");}} ?>>75</option>
                   <option value="100"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 100){echo (" selected");}} ?>>100</option>
+                  <option value=""<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == ""){echo (" selected");}} ?>>all</option>
                 </select>&nbsp;
                 <button class="azrselector btn btn-primary">pas toe</button>
             </div>
@@ -145,6 +146,9 @@ mysqli_close($link);
         <?php
         if (isset($_GET["azr"])) {
             $azr = $_GET["azr"];
+            if($azr == ""){
+                $azr = $aantalproducten;
+            }
             $i = 1;
             if ($azr == "max" || $azr > $aantalproducten || $azr < 1) {
                 $azr = $aantalproducten;
