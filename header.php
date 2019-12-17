@@ -177,6 +177,15 @@ if (isset($_GET["azr"])){
         <a href="shoppingcart.php" style="margin-left: auto">
             <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>
         </a>
+        <?php 
+        if(isset($_SESSION['user_data'])) {
+        echo '
+        <a href="accountpage.php" style="margin-left: 10px;">
+        <i class="fa fa-user-circle" style="font-size: 2.7em; color: black;"></i>
+        </a>
+        ';
+        }
+        ?>
         <!--        <a>-->
         <!--        <i class="fa fa-user-circle" style="font-size: 2.5em"></i>-->
         <!--        </a>-->
