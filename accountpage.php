@@ -22,11 +22,19 @@ try {
 <body>
 <div class="container">
 <!-- header pagina -->
-<h2 class="margin-left">Account pagina</h2>
+<h2>Account pagina</h2>
+<hr>
 
     <!-- <div class="columnAccount"> -->
 
 <?php
+if(isset($_GET['pcs'])){
+    if($_GET['pcs'] == 1){
+        echo '<div class="alert alert-success" role="alert">
+        Password changed succesfuly!
+      </div>';
+    }
+}
     if (isset($_SESSION["user_data"])) {
         $sqlUserData = "SELECT * FROM users WHERE UserID = ?";
         $statementUserData = mysqli_prepare($connection, $sqlUserData);
@@ -59,7 +67,28 @@ try {
         print ($phone);
     }
 ?>
+<br>
+<br>
 <!-- </div> -->
+<div class="jumbotron">
+<h2>Verander je wachtwoord</h2>
+<hr>
+<form action="resetpassword.php" method="post">
+    <div class="form-group">
+        <label for="oldp">Old password</label>
+        <input class="form-control" type="password" name="oldp" id="oldp">
+    </div>
+    <div class="form-group">
+        <label for="newp1">New password</label>
+        <input class="form-control" type="password" name="newp1" id="newp1">
+    </div>
+    <div class="form-group">
+        <label for="newp2">Confirm new password</label>
+        <input class="form-control" type="password" name="newp2" id="newp2">
+    </div>
+    <button class="btn btn-warning" type="submit">Change my password</button>
+</form>
+</div>
 </div>
 </body>
 </html>
