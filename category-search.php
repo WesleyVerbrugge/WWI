@@ -92,7 +92,7 @@ if ($stmt = mysqli_prepare($link, $sql)) {
                             echo "<h5 class='card-title'>" . $rc['StockItemName'] . "</h5>";
                             echo "<div class='card-tekst'><p class='card-text'>" . $rc['MarketingComments'] . "</p></div>";
                             echo '<div><a href="showitem.php?item_id=' . $rc["StockItemID"] . '" class="btn btn-primary koop-knop">Bekijk Product</a>';
-                            echo "<div class='product-price'>&#8364;&nbsp;" . str_replace('.', ',', $rc['RecommendedRetailPrice']) . "</div>";
+                            echo "<div class='product-price'>&#8364;&nbsp;" . $rc['RecommendedRetailPrice'] . "</div>";
                             echo "</div>";
                             echo "</div>";
                             echo "</div>";

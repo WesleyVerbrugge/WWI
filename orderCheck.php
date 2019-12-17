@@ -20,12 +20,12 @@ $statement = mysqli_prepare($connection, $sql);
 <html>
 
 <head>
-    <title>Bestelling</title>
+    <title>Order</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <!-- header pagina -->
-<h2 class="margin-left">Bestelling</h2>
+<h2 class="margin-left">Order</h2>
 
 <div class="row">
     <div class="columnOrder">
@@ -33,9 +33,9 @@ $statement = mysqli_prepare($connection, $sql);
 
 <table>
     <thead>
-    <th>Naam</th>
-    <th class="tableTextRight">Aantal</th>
-    <th class="tableTextRight">Bedrag</th>
+    <th>Product</th>
+    <th class="tableTextRight">Number</th>
+    <th class="tableTextRight">Total</th>
     </thead>
 
 <?php
@@ -66,7 +66,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
 <tr>
     <td><img height="50" width="50" src="images/img1.jpg"><?php print ($naam);?></td>
     <td class="tableTextRight"><?php print ($aantal);?></td>
-    <td class="tableTextRight">&euro;<?php print (str_replace('.', ',', $bedrag));?></td>
+    <td class="tableTextRight">&euro;<?php print $bedrag;?></td>
 </tr>
 
     <?php
@@ -82,8 +82,8 @@ if ($totaalBedrag < 50){
     ?>
     <tr>
         <td></td>
-        <td class="tableTextRight">Verzend kosten:</td>
-        <td class="tableTextRight">&euro;3,95</td>
+        <td class="tableTextRight">Shipping costs:</td>
+        <td class="tableTextRight">&euro;3.95</td>
     </tr>
 
 
@@ -92,21 +92,23 @@ if ($totaalBedrag < 50){
     ?>
     <tr>
         <td></td>
-        <td class="tableTextRight">Verzend kosten:</td>
-        <td class="tableTextRight">&euro;0,00</td>
+        <td class="tableTextRight">Shipping costs:</td>
+        <td class="tableTextRight">&euro;0.00</td>
     </tr>
     <?php
 }
 ?>
     <tr>
         <td></td>
-        <td class="tableTextRight">Totaal Bedrag:</td>
-        <td class="tableTextRight">&euro;<?php print (str_replace('.', ',',$totaalBedrag))?></td>
+        <td class="tableTextRight">Total cost:</td>
+        <td class="tableTextRight">&euro;<?php print $totaalBedrag?></td>
     </tr>
     </table>
+        <a class="margin-left" href="shoppingcart.php">Back to shopping cart</a>
         </div>
 
     <div class="columnOrder">
+        <h1>Delivery details</h1>
 
     <?php
     if (isset($_SESSION["user_data"])) {
@@ -135,12 +137,21 @@ if ($totaalBedrag < 50){
         $email = $resultsUser["Emailadress"];
         $adress = $resultsUser["Adress"];
         $phone = $resultsUser["Phone"];
+        $country = $resultsUser["Country"];
+        $housenumber = $resultsUser["Housenumber"];
+        $postalcode = $resultsUser["Postalcode"];
+        $city = $resultsUser["City"];
 
         print ($firstNameUser . " " . $lastNameUser . "<BR>");
-        print ($adress . "<BR>");
-        print ($email . "<BR>");
-        print ($phone);
+        print ($country . "<BR>");
+        print ($adress . " " .  $housenumber . "<BR>");
+        print ($postalcode . " " . $city . "<BR>");
+        ?>
 
+        <BR>
+        <a href="accountpage.php">Go to account page</a>
+
+        <?php
 
     } else {
         print ("You need to login bofore you are able to place an order. <BR><BR>");

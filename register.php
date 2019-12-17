@@ -34,7 +34,7 @@
               <input type="password" class="form-control rounded" name="pwd2" placeholder="Confirm password" required=""/>
 			 
 			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">register</button>
-            <a href="login.php" class="btn-block" style="text-align: center">Heb je al een bestaand account?</a>
+            <a href="login.php" class="btn-block" style="text-align: center">Already got an account?</a>
 		</form>			
 	</div>
 </div>

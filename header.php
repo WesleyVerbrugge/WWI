@@ -141,7 +141,6 @@ if (isset($_GET["azr"])){
     <img src="WWI%20logo.png" class="logo" alt="logo">
     </a>
     &nbsp;
-    <a class="navbar-brand" href="#">WWI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -151,19 +150,16 @@ if (isset($_GET["azr"])){
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="backend-search.php?Term=&Schoice=aname&azr=max">Bladeren door producten</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" hidden>Disabled</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="backend-search.php?Term=&Schoice=aname&azr=max">Browse products</a>
             </li>
         </ul>
 
 <!--        <form class="form-inline my-lg-0 mx-auto">-->
             <div class="input-group" style="width: 25%; margin: auto; min-width: 250px">
-                <input type="text" class="form-control rounded-left" value="<?php if (isset($_GET["Term"])){print($_GET["Term"]);} ?>" placeholder="Zoek product" id="search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" class="form-control rounded-left" value="<?php if (isset($_GET["Term"])){print($_GET["Term"]);} ?>" placeholder="Browse Product" id="search" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-success" type="button" id="button-addon2">Zoek</button>
+                    <button class="btn btn-outline-success" type="button" id="button-addon2">Search</button>
                 </div>
             </div>
             <!-- <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" /> -->

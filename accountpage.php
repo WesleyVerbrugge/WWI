@@ -16,13 +16,13 @@ try {
 <html>
 
 <head>
-    <title>Account pagina</title>
+    <title>Account page</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
 <!-- header pagina -->
-<h2>Account pagina</h2>
+<h2>Account page</h2>
 <hr>
 
     <!-- <div class="columnAccount"> -->
@@ -60,9 +60,15 @@ if(isset($_GET['pcs'])){
         $email = $resultsUser["Emailadress"];
         $adress = $resultsUser["Adress"];
         $phone = $resultsUser["Phone"];
+        $country = $resultsUser["Country"];
+        $housenumber = $resultsUser["Housenumber"];
+        $postalcode = $resultsUser["Postalcode"];
+        $city = $resultsUser["City"];
 
         print ($firstNameUser . " " . $lastNameUser . "<BR>");
-        print ($adress . "<BR>");
+        print ($country . "<BR>");
+        print ($adress . " " .  $housenumber . "<BR>");
+        print ($postalcode . " " . $city . "<BR>");
         print ($email . "<BR>");
         print ($phone);
     }
@@ -71,7 +77,7 @@ if(isset($_GET['pcs'])){
 <br>
 <!-- </div> -->
 <div class="jumbotron">
-<h2>Verander je wachtwoord</h2>
+<h2>Change your password</h2>
 <hr>
 <form action="resetpassword.php" method="post">
     <div class="form-group">

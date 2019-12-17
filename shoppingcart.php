@@ -21,12 +21,12 @@ if(isset($_GET['delete_item_id'])){
 <html>
 
 <head>
-    <title>Winkelwagen</title>
+    <title>Shopping cart</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <!-- header pagina -->
-<h2 class="margin-left">Winkelwagen</h2>
+<h2 class="margin-left">Shopping cart</h2>
 <?php
 
 //checked of knop voor legen winkelwagen geset is
@@ -48,10 +48,10 @@ if (isset($_GET["LeegCart"])){
 <table class="shoppingcarttable">
     <thead>
         <th>Product</th>
-        <th class="tableTextRight">Prijs Per Stuk</th>
-        <th class="tableTextRight">Aantal</th>
-        <th class="tableTextRight">Verwijderen</th>
-        <th class="tableTextRight">Totaal</th>
+        <th class="tableTextRight">Price per piece</th>
+        <th class="tableTextRight">Number</th>
+        <th class="tableTextRight">Remove</th>
+        <th class="tableTextRight">Total</th>
     </thead>
     <?php
     //sql query product informatie
@@ -88,7 +88,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
             <td class="column1Shoppincart"><img height="75" width="75" src="images/img1.jpg"><?php print ($naam) ?></td>
             <a class="column2Shoppingcart">
                 <!-- prijs per stuk met een str_replace om een . naar een , te veranderen -->
-            <td class="tableTextRight">&#8364;<?php print (str_replace('.', ',', $prijs)) ?></td>
+            <td class="tableTextRight">&#8364;<?php print $prijs ?></td>
                 <td class="tableTextRight">
                     <!-- form om de aantallen te veranderen -->
                     <?php 
@@ -112,7 +112,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
             <td class="tableTextRight">&#8364;<?php
                 // totaal prijs van het product * aantal
                     $totaal = $prijs * $aantal;
-                    print (str_replace('.', ',', $totaal));
+                    print $totaal;
                     $eindtotaal = $eindtotaal + $totaal;
                 ?></td>
             </a>
@@ -129,7 +129,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
        <td></td>
         <td></td>
         <td></td>
-        <td class="tableTextRight">Verzend kosten:</td>
+        <td class="tableTextRight">Shipping costs:</td>
         <td class="tableTextRight">&euro;3.95</td>
     </tr>
 
@@ -141,8 +141,8 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
        <td></td>
         <td></td>
         <td></td>
-        <td class="tableTextRight">Verzend kosten:</td>
-        <td class="tableTextRight">&euro;0,00</td>
+        <td class="tableTextRight">Shipping costs:</td>
+        <td class="tableTextRight">&euro;0.00</td>
     </tr>
         <?php
     }
@@ -151,23 +151,18 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
         <td></td>
         <td></td>
         <td></td>
-        <td class="tableTextRight">Totaal bedrag:</td>
+        <td class="tableTextRight">Total cost:</td>
         <td class="totaalbedrag tableTextRight">&#8364;<?php
 
             //print het te betalen bedrag voor de gehele winkelwagen
-            print (str_replace('.', ',', $eindtotaal));
+            print $eindtotaal;
             ?></td>
     </tr>
 </table>
-<p>
-            <!-- button voor het legen van de gehele winkelwagen -->
-    <form class="margin-left" action="shoppingcart.php" method="get">
-        <input type="submit" name="LeegCart" value="leeg winkelwagen">
-    </form>
-</p>
+
             <!-- knop die je naar de pagina voor het zien van je bestelling brengt -->
             <form class="margin-left" action="orderCheck.php">
-                <input type="submit" name="orderCheck" value="bestellen">
+                <input class="shopcartbutton" type="submit" name="orderCheck" value="Order">
             </form>
 
 <?php
