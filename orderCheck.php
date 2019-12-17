@@ -133,15 +133,11 @@ if ($totaalBedrag < 50){
         $firstNameUser = $resultsUser["Firstname"];
         $lastNameUser = $resultsUser["LastName"];
         $email = $resultsUser["Emailadress"];
-        $country = $resultsUser["CountryName"];
-        $city = $resultsUser["CityName"];
-        $street = $resultsUser["StreetName"];
-        $housenumber = $resultsUser["HouseNumber"];
-        $postalcode = $resultsUser["PostalCode"];
-        $phone = $resultsUser["PhoneNumber"];
+        $adress = $resultsUser["Adress"];
+        $phone = $resultsUser["Phone"];
 
         print ($firstNameUser . " " . $lastNameUser . "<BR>");
-        print ($street . " " . $housenumber . " " . $city . " " . $country . " " . $postalcode . "<BR>");
+        print ($adress . "<BR>");
         print ($email . "<BR>");
         print ($phone);
 

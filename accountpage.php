@@ -28,8 +28,7 @@ try {
 
 <?php
     if (isset($_SESSION["user_data"])) {
-        $sqlUserData = "SELECT * FROM users LEFT JOIN addressdata ON addressdata.UserID = users.UserID WHERE users.UserID = ?";
-    //$sqlUserData = "SELECT * FROM user_adress WHERE user_id = ?";
+        $sqlUserData = "SELECT * FROM users WHERE UserID = ?";
         $statementUserData = mysqli_prepare($connection, $sqlUserData);
 
         if (!$statementUserData) {
