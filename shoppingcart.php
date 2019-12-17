@@ -40,7 +40,7 @@ if (isset($_GET["LeegCart"])){
     // checked of de winkelwagen leeg is
         if (empty($_SESSION["winkelwagen"])){
             print ("<p class=\"winkelwagenleeg\">");
-            print ("Uw winkelwagen is leeg");
+            print ("Your shopping cart is empty");
             print ("</p>");
         } else {
     ?>
