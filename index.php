@@ -17,6 +17,13 @@ if(isset($_GET['mls'])){
         </div>';
     }
 }
+if(isset($_GET['na'])){
+    if($_GET['na'] == 1){
+        echo '<div class="alert alert-danger" role="alert">
+        No admin access
+        </div>';
+    }
+}
 ?>
 <body>
 <div class="container-fluid">
