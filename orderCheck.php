@@ -166,5 +166,9 @@ if ($totaalBedrag < 50){
     ?>
     </div>
 </div>
+<div>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+    <script>paypal.Buttons().render('body');</script>
+</div>
 
 </html>
