@@ -51,6 +51,14 @@ try {
                             </label>
                         </div>
                         <div class="form-group">
+                            <label>Country:
+                                <input style="" type="text" name="country" class="form-control">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>Country:
+                                <input style="" type="text" name="country" class="form-control">
+                            </label>
                         </div>
                     </form>
                 </div>
@@ -69,7 +77,7 @@ if(isset($_GET['pcs'])){
       </div>';
     }
 }
-print ("<div style='display: inline-block'>");
+print ("<div>");
 
     if (isset($_SESSION["user_data"])) {
         $sqlUserData = "SELECT * FROM users WHERE UserID = ?";
@@ -115,31 +123,13 @@ print ("<div style='display: inline-block'>");
     }
 
 ?>
+<BR><BR>
 </div>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update Account Details</button>
-
 <br>
 <br>
-<!-- </div> -->
-<div class="jumbotron">
-<h2>Change your password</h2>
-<hr>
-<form action="resetpassword.php" method="post">
-    <div class="form-group">
-        <label for="oldp">Old password</label>
-        <input class="form-control" type="password" name="oldp" id="oldp">
-    </div>
-    <div class="form-group">
-        <label for="newp1">New password</label>
-        <input class="form-control" type="password" name="newp1" id="newp1">
-    </div>
-    <div class="form-group">
-        <label for="newp2">Confirm new password</label>
-        <input class="form-control" type="password" name="newp2" id="newp2">
-    </div>
-    <button class="btn btn-warning" type="submit">Change my password</button>
-</form>
-</div>
-</div>
+<a class="btn btn-primary" href="change-password.php">Change your password</a>
 </body>
 </html>
+
+
