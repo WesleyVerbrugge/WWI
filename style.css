@@ -449,10 +449,12 @@ input[type=number]
   position: absolute;
   bottom: -1px;
   height: 50%;
+}
 
 .columnOrder {
   float: left;
   width: 50%;
+
 }
 
 .row:after {

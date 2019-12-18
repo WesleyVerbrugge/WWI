@@ -96,7 +96,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
                     </div>
                     </div>
             </td>
-            <td data-th="Price">&#8364;<?php print (str_replace('.', ',', $prijs)) ?></td>
+            <td data-th="Price">&#8364;<?php print ($prijs) ?></td>
                 <!-- prijs per stuk met een str_replace om een . naar een , te veranderen -->
             <!-- form om de aantallen te veranderen -->
             <td data-th="Quantity" style="text-align: center">
@@ -118,7 +118,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
                     <button style="margin-top: .1rem" class="btn btn-info btn"><i class="fa fa-refresh"></i></button>
                 </form>
                 </td>
-            <td data-th="Subtotal" class="text-center">&#8364;<?php print(str_replace('.', ',',$totaal = $prijs * $_SESSION["winkelwagen"][$i]["quantity"])); $eindtotaal += $totaal; ?></td>
+            <td data-th="Subtotal" class="text-center">&#8364;<?php print(number_format(($totaal = $prijs * $_SESSION["winkelwagen"][$i]["quantity"]), 2)); $eindtotaal += $totaal; ?></td>
 
 <td>
     <form action="shoppingcart.php" method="get">
@@ -144,7 +144,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
                 <tr>
                     <td><a href="backend-search.php?Term=&Schoice=aname&azr=max" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                     <td colspan="2" class="hidden-xs"></td>
-                    <td class="hidden-xs text-center"><strong><?php print ("&#8364; " . str_replace(".", ",",$eindtotaal)); ?></strong></td>
+                    <td class="hidden-xs text-center"><strong><?php print ("&#8364; " . number_format($eindtotaal, 2));?></strong></td>
                     <td><a href="orderCheck.php" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
                 </tr>
                 </tfoot>

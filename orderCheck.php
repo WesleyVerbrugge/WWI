@@ -54,7 +54,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
 
     foreach($_SESSION['winkelwagen'] as $item) {
 
-        $aantal = $item['quantity'];
+        $aantal = $_SESSION["winkelwagen"][$i]["quantity"];
     }
 
     $naam = $row["StockItemName"];
@@ -66,7 +66,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
 <tr>
     <td><img height="50" width="50" src="images/img1.jpg"><?php print ($naam);?></td>
     <td class="tableTextRight"><?php print ($aantal);?></td>
-    <td class="tableTextRight">&euro;<?php print $bedrag;?></td>
+    <td class="tableTextRight">&euro;<?php print number_format($bedrag, 2);?></td>
 </tr>
 
     <?php
@@ -101,7 +101,7 @@ if ($totaalBedrag < 50){
     <tr>
         <td></td>
         <td class="tableTextRight">Total cost:</td>
-        <td class="tableTextRight">&euro;<?php print $totaalBedrag?></td>
+        <td class="tableTextRight">&euro;<?php print number_format($totaalBedrag, 2)?></td>
     </tr>
     </table>
         <a class="margin-left" href="shoppingcart.php">Back to shopping cart</a>
