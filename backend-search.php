@@ -86,31 +86,6 @@ mysqli_close($link);
     <title>Document</title>
 </head>
 <body>
-<!--<table style="border: solid;">-->
-<!--<thead>-->
-<!--<th>id</th>-->
-<!--<th>name</th>-->
-<!--<th></th>-->
-<!--</thead>-->
-<!--<tbody>-->
-<?php
-//if(isset($_GET['azr'])){
-//  $azr = $_GET['azr'];
-//  $i = 1;
-//  foreach($result as $row){
-//    if($i <= $azr) {
-//      echo '<tr>';
-//      echo '<td>' . $row['StockItemID'] . '</td>';
-//      echo '<td>' . $row['SearchDetails'] . '</td>';
-//      echo '<td><form method="post" action="showitem.php"><input type="hidden" name="item_id" value="' . $row["StockItemID"] . '"/> <input type="submit" value="bekijk item"></form></td>';
-//      echo '</tr>';
-//      $i++;
-//    }
-//  }
-//}
-?>
-<!--</tbody>-->
-<!--</table>-->
 <!--Back to top Knop-->
 <a id="button"></a>
 
@@ -129,7 +104,7 @@ mysqli_close($link);
     <div style="background-color: transparent; width: 120px">
         <div class="form-inline my-lg-0 mx-auto">
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Hoeveelheid zoekresultaten</label>&nbsp;
+                <label for="exampleFormControlSelect1">Number of search results</label>&nbsp;
                 <select class="azrval form-control" id="exampleFormControlSelect1">
                   <option value="25"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 25){echo (" selected");}} ?>>25</option>
                   <option value="50"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 50){echo (" selected");}} ?>>50</option>
@@ -137,7 +112,7 @@ mysqli_close($link);
                   <option value="100"<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == 100){echo (" selected");}} ?>>100</option>
                   <option value=""<?php if (isset($_GET["azr"])){ $azr_value = $_GET["azr"]; if ($azr_value == ""){echo (" selected");}} ?>>all</option>
                 </select>&nbsp;
-                <button class="azrselector btn btn-primary">pas toe</button>
+                <button class="azrselector btn btn-primary">Apply</button>
             </div>
         </div>
     </div>
@@ -168,9 +143,9 @@ mysqli_close($link);
                                 <div class="card-tekst"><p class="card-text"><?php /*echo $row["SearchDetails"];*/
                                         echo $row["MarketingComments"]; ?></p></div>
                                 <div><a href="showitem.php?item_id=<?php echo $row["StockItemID"] ?>"
-                                        class="btn btn-primary koop-knop">Bekijk Product</a>
+                                        class="btn btn-primary koop-knop">Go to product</a>
                                     <div class="product-price">
-                                        &#8364;&nbsp;<?php echo str_replace('.', ',', $row["RecommendedRetailPrice"]); ?></div>
+                                        &#8364;&nbsp;<?php echo $row["RecommendedRetailPrice"]; ?></div>
                                 </div>
                             </div>
                         </div>

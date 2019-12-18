@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/Mollie/vendor/composer" />
+      <path value="$PROJECT_DIR$/Mollie/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/Mollie/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/Mollie/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/Mollie/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/Mollie/vendor/psr/http-message" />
+    </include_path>
+  </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/Mollie/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
+</project>

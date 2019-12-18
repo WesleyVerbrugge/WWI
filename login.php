@@ -29,7 +29,7 @@ if(isset($_GET['rs'])) {
 			  <input type="password" class="form-control rounded" name="Password" placeholder="Password" required=""/>
 			 
 			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>
-            <a href="register.php" class="btn-block" style="text-align: center">Nog geen account?</a>
+            <a href="register.php" class="btn-block" style="text-align: center">No account yet?</a>
 		</form>			
 	</div>
 </div>
