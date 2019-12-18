@@ -64,8 +64,13 @@ if(isset($_GET['pcs'])){
         $housenumber = $resultsUser["Housenumber"];
         $postalcode = $resultsUser["Postalcode"];
         $city = $resultsUser["City"];
+        if (!empty($resultsUser["Prepositions"])){
+            $prepositions = $resultsUser["Prepositions"] . " ";
+        } else {
+            $prepositions = "";
+        }
 
-        print ($firstNameUser . " " . $lastNameUser . "<BR>");
+        print ($firstNameUser . " " . $prepositions . $lastNameUser . "<BR>");
         print ($country . "<BR>");
         print ($adress . " " .  $housenumber . "<BR>");
         print ($postalcode . " " . $city . "<BR>");

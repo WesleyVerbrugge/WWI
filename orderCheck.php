@@ -112,7 +112,7 @@ if ($totaalBedrag < 50){
 
     <?php
     if (isset($_SESSION["user_data"])) {
-        $sqlUserData = "SELECT * FROM users LEFT JOIN addressdata ON addressdata.UserID = users.UserID WHERE users.UserID = ?";
+        $sqlUserData = "SELECT * FROM users WHERE UserID = ?";
         //$sqlUserData = "SELECT * FROM user_adress WHERE user_id = ?";
         $statementUserData = mysqli_prepare($connection, $sqlUserData);
 
@@ -141,8 +141,13 @@ if ($totaalBedrag < 50){
         $housenumber = $resultsUser["Housenumber"];
         $postalcode = $resultsUser["Postalcode"];
         $city = $resultsUser["City"];
+        if (!empty($resultsUser["Prepositions"])){
+            $prepositions = $resultsUser["Prepositions"] . " ";
+        } else {
+            $prepositions = "";
+        }
 
-        print ($firstNameUser . " " . $lastNameUser . "<BR>");
+        print ($firstNameUser . " " . $prepositions . $lastNameUser . "<BR>");
         print ($country . "<BR>");
         print ($adress . " " .  $housenumber . "<BR>");
         print ($postalcode . " " . $city . "<BR>");
