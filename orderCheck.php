@@ -162,13 +162,61 @@ if ($totaalBedrag < 50){
         print ("You need to login bofore you are able to place an order. <BR><BR>");
         print ("<a href='login.php'>To login page</a>");
     }
-
     ?>
     </div>
 </div>
+
+
+
+<?php
+
+?>
+<script>
+
+</script>
+
+<script
+        src="https://www.paypal.com/sdk/js?client-id=AQT1KXLO32aLVif7-yeL_OrFlKFLBfcicZsaF5lWTKSKlS3nMsNGu9MCWWm4LFy06QpusRHp_JfHzgvH"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+</script>
+
 <div>
-    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
-    <script>paypal.Buttons().render('body');</script>
+    <script
+            src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+    </script>
+
+    <div id="paypal-button-container"></div>
+<input type="text" hidden id="totalprice" value="<?php print($totaalBedrag); ?>">
+    <script>
+        var totalprice = document.getElementById("totalprice").value;
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: totalprice
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    window.location.href = "orders.php?oc=1";
+                    // alert('Transaction completed by ' + details.payer.name.given_name);
+                    // Call your server to save the transaction
+                    return fetch('/paypal-transaction-complete', {
+                        method: 'post',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            orderID: data.orderID
+                        })
+                    });
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+
 </div>
 
 </html>

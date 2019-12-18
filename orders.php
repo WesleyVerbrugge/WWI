@@ -22,6 +22,10 @@ if(isset($_GET['do'])){
   </div>';
   }
 }
+
+if (isset($_GET["oc"]) && $_GET["oc"] == 1){
+    print ("<div class=\"alert alert-success\" role=\"alert\">Your order is complete, thank you for your purchase!</div>");
+}
 ?>
 <h2 style="margin-left: 40%;">Orders</h2>
 <hr>
