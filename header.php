@@ -175,7 +175,7 @@ if (isset($_GET["azr"])){
 
         <a href="shoppingcart.php" style="z-index: 1">
             <i class="fa fa-shopping-cart" style="font-size: 2.7em; color: black;"></i>
-            <span style="z-index: 2" class="badge badge-pill badge-primary"><?php if (isset($_SESSION["winkelwagen"])){ print (count($_SESSION["winkelwagen"])); } ?></span>
+            <span style="z-index: 2" class="badge badge-pill badge-primary"><?php if (isset($_SESSION["winkelwagen"])){ if (isset($_GET["submitWinkelwagen"])) { print (count($_SESSION["winkelwagen"]) + 1); } elseif (isset($_GET["verwijderProduct"])){print (count($_SESSION["winkelwagen"]) - 1);} else {print (count($_SESSION["winkelwagen"])); }} ?></span>
         </a>
         <?php 
         if(isset($_SESSION['user_data'])) {

@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if (isset($_GET["oc"]) && $_GET["oc"] == 1){
+    unset($_SESSION["winkelwagen"]);
+}
 include "header.php";
 $link = mysqli_connect("localhost", "root", "", "wideworldimporters", 3306);
 $sql = "SELECT * FROM transactions JOIN StockItems on transactions.product_id = StockItems.StockItemID WHERE user_id = ?";
@@ -25,6 +28,7 @@ if(isset($_GET['do'])){
 
 if (isset($_GET["oc"]) && $_GET["oc"] == 1){
     print ("<div class=\"alert alert-success\" role=\"alert\">Your order is complete, thank you for your purchase!</div>");
+    unset($_SESSION["winkelwagen"]);
 }
 ?>
 <h2 style="margin-left: 40%;">Orders</h2>
