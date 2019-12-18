@@ -111,7 +111,7 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
             echo "<p class='voldoendevoorraad'>In stock!</p>";
         }
         if (($q->LastStocktakeQuantity > 0) && ($q->LastStocktakeQuantity <10)){
-            echo ("<p class='beperktevoorraad'>Limited stock, order fast! Only $q->LastStocktakeQuantity remaining!.</p>");
+            echo ("<p class='beperktevoorraad'>Limited stock, order fast! Only $q->LastStocktakeQuantity remaining!</p>");
         } if ($q->LastStocktakeQuantity <= 0) {
             echo ("<p class='geenvoorraad'>Sold out!</p>");
         }
