@@ -119,7 +119,7 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
         ?>
         <!-- toevoegen knop -->
         <form method="get" action="showitem.php">
-            <input type="submit" class="shopcartbutton" name="submitWinkelwagen" value="Move to shopping cart">
+            <input type="submit" class="shopcartbutton" name="submitWinkelwagen" value="Add to shopping cart">
             <input type="hidden" id="item_id" name="item_id" value="<?php print ($q->StockItemID);?>">
         </form>
         <?php
