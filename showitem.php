@@ -73,18 +73,24 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
       Review removed succesfully
     </div>';
     }
+
+    if (!empty($q->image)){
+        $image = $q->image;
+    } else {
+        $image = "images/img1.jpg";
+    }
       ?>
     <div class="column1">
       <div id="carouselExampleControls" class="borderimage carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="images/img1.jpg" alt="First slide">
+            <img class="d-block w-100" src="<?php echo htmlspecialchars($image); ?>" alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="images/img1.jpg" alt="Second slide">
+            <img class="d-block w-100" src="<?php echo htmlspecialchars($image); ?>" alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="images/img1.jpg" alt="Third slide">
+            <img class="d-block w-100" src="<?php echo htmlspecialchars($image); ?>" alt="Third slide">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

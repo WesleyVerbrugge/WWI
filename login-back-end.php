@@ -33,12 +33,10 @@ if(isset($_POST['Email'])) {
                         $newURL = "/index.php";
                         header("Location: index.php?ls=1");
                     } else {
-                        echo "<div class='alert alert-primary' role='alert'>
-                        <a href='#' class='alert-link'>Wrong Password</a>
-                        </div>";
+                        header("Location: login.php?wp=1");
                     }
                 } else {
-                    echo "<p>No matches found</p>";
+                    header("Location: login.php?wp=1");
                 }
             } else {
                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);

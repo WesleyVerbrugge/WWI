@@ -3,7 +3,7 @@ session_start();
 
 $totaalBedrag = 0;
 
-include "header.php";
+include_once "header.php";
 include "dbconnection.php";
 // database connectie
 try {
@@ -17,16 +17,13 @@ $statement = mysqli_prepare($connection, $sql);
 
 ?>
 
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 
-<head>
-    <title>Order</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
+<body>
+<div class="container-fluid" style="width: 80%">
 <!-- header pagina -->
-<h2 class="margin-left">Order</h2>
-
+<h2 class="">Order</h2>
+<hr>
 <div class="row">
     <div class="columnOrder">
 
@@ -104,12 +101,11 @@ if ($totaalBedrag < 50){
         <td class="tableTextRight">&euro;<?php print number_format($totaalBedrag, 2)?></td>
     </tr>
     </table>
-        <a class="margin-left" href="shoppingcart.php">Back to shopping cart</a>
+        <button class="margin-left btn btn-warning" href="shoppingcart.php">< Back to shopping cart</button>
         </div>
-
     <div class="columnOrder">
         <h1>Delivery details</h1>
-
+        <hr>
     <?php
     if (isset($_SESSION["user_data"])) {
         $sqlUserData = "SELECT * FROM users WHERE UserID = ?";
@@ -154,7 +150,7 @@ if ($totaalBedrag < 50){
         ?>
 
         <BR>
-        <a href="accountpage.php">Go to account page</a>
+        <a href="accountpage.php">Update delivery details</a>
 
         <?php
 
@@ -163,17 +159,17 @@ if ($totaalBedrag < 50){
         print ("<a href='login.php'>To login page</a>");
     }
     ?>
+
     </div>
+
 </div>
+    <hr width="100%" class="float-left">
 
-
+    <br>
 
 <?php
 
 ?>
-<script>
-
-</script>
 
 <script
         src="https://www.paypal.com/sdk/js?client-id=AQT1KXLO32aLVif7-yeL_OrFlKFLBfcicZsaF5lWTKSKlS3nMsNGu9MCWWm4LFy06QpusRHp_JfHzgvH"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
@@ -218,5 +214,6 @@ if ($totaalBedrag < 50){
     </script>
 
 </div>
-
+</div>
+</body>
 </html>

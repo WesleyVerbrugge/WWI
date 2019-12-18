@@ -1,4 +1,5 @@
-<?php include_once "header.php"; 
+<?php include_once "header.php";
+
 if(isset($_GET['rs'])) {
 	echo '<div class="alert alert-success" role="alert">
 	Register succesful!
@@ -20,6 +21,11 @@ if(isset($_GET['rs'])) {
 <body>
 
 <div class = "container">
+    <?php
+    if (isset($_GET["wp"])){
+    echo "<div class='alert alert-danger' role='alert'>Wrong login credentials!</div>";
+    }
+    ?>
 	<div class="wrapper">
 		<form action="login-back-end.php" method="post" name="Login_Form" class="form-signin">       
 		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>

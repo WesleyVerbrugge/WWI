@@ -31,7 +31,7 @@ if($_SESSION['user_data']['is_admin'] == 1){
     echo '<script type="text/javascript">
             var baseurl = window.location.origin;
                 var extra = "?na=1";
-                window.location = baseurl + "/school/wwi/index.php" + extra;
+                window.location = baseurl + "/wwi/index.php" + extra;
             </script>';
 }
 if(isset($_GET['rri'])){
@@ -47,7 +47,7 @@ if(isset($_GET['rri'])){
             echo '<script type="text/javascript">
             var baseurl = window.location.origin;
                 var extra = "?rs=1";
-                window.location = baseurl + "/school/wwi/returnedorders.php" + extra;
+                window.location = baseurl + "/wwi/returnedorders.php" + extra;
             </script>';
         } else {
             echo "Error deleting record: " . $link->error;
@@ -83,7 +83,7 @@ if(isset($_GET['rri'])){
         <th scope="row"><?php echo htmlspecialchars($returnedOrder['id']); ?></th>
         <td><?php echo htmlspecialchars($returnedOrder['StockItemName']); ?></td>
         <td><?php echo htmlspecialchars($returnedOrder['StockItemID']); ?></td>
-        <td><?php echo htmlspecialchars($returnedOrder['Firstname']) . htmlspecialchars($returnedOrder['LastName']); ?></td>
+        <td><?php echo htmlspecialchars($returnedOrder['Firstname']) . " " . htmlspecialchars($returnedOrder['LastName']); ?></td>
         <td><?php echo htmlspecialchars($returnedOrder['Emailadress']); ?></td>
         <?php echo '<td><button class="btn btn-secondary"><a style="color: white;" href="ReturnedOrders.php?rri=1&order_id=' . $returnedOrder['id'] . '">Register</a></button></td>'; ?>
     </tr>

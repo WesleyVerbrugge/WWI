@@ -43,7 +43,7 @@ $sql = "UPDATE transactions SET is_returned='0' WHERE id=$order_id";
 if(mysqli_query($link, $sql)){
     echo '<script type="text/javascript">
             var baseurl = window.location.origin;
-                window.location = baseurl + "/school/wwi/returnitem.pdf";
+                window.location = baseurl + "/wwi/returnitem.pdf";
             </script>';
 } else {
     echo mysqli_error($link);

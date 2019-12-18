@@ -174,9 +174,22 @@ print ("<div>");
 <BR><BR>
 </div>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update Account Details</button>
+<a class="btn btn-secondary" href="orders.php" style="margin-left: 3rem">Your orders</a>
 <br>
 <br>
 <a class="btn btn-primary" href="change-password.php">Change your password</a>
+
+
+
+<?php
+ if (isset($_SESSION["user_data"])){
+     if ($_SESSION["user_data"]["is_admin"] == 1){
+         echo "<a class=\"btn btn-secondary\" href=\"ReturnedOrders.php\" style=\"margin-left: 3rem\">Returned Orders</a>";
+     }
+ }
+
+    ?>
+
 </body>
 </html>
 

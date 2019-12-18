@@ -1,13 +1,31 @@
 <?php 
 session_start();
 if (isset($_GET["oc"]) && $_GET["oc"] == 1){
+    $link = mysqli_connect("localhost", "root", "", "wideworldimporters");
+    if ($link === false) {
+        die("ERROR: Could not connect. " . mysqli_connect_error());
+    }
+    $user_id = $_SESSION["user_data"]["UserID"];
+    $timestamp = date("Y-m-d H:i:s");
+foreach ($_SESSION["winkelwagen"] as $item){
+    $itemID = $item["item_id"];
+    $sql = "INSERT INTO transactions (product_id, user_id, order_date) VALUES ($itemID, $user_id, '$timestamp')";
+    if ($link->query($sql) === TRUE) {
+
+    } else {
+        echo "Error: " . $sql . "<br>" . $link->error;
+    }
+}
     unset($_SESSION["winkelwagen"]);
+ header("Location: orders.php");
 }
 include "header.php";
 $link = mysqli_connect("localhost", "root", "", "wideworldimporters", 3306);
 $sql = "SELECT * FROM transactions JOIN StockItems on transactions.product_id = StockItems.StockItemID WHERE user_id = ?";
 $stmt = mysqli_prepare($link, $sql);
-$user_id = $_SESSION['user_data']['UserID'];
+if (isset($_SESSION["user_data"])){
+    $user_id = $_SESSION['user_data']['UserID'];
+}
 mysqli_stmt_bind_param($stmt, "i", $user_id);
 mysqli_stmt_execute($stmt);
 $results = mysqli_stmt_get_result($stmt);
@@ -56,10 +74,10 @@ if (isset($_GET["oc"]) && $_GET["oc"] == 1){
             if(!is_null($order['delivery_date'])){
                 echo '<td>' . $order['delivery_date'] . '</td>';
                 echo '<td></td>';
-                echo '<td><button class="btn btn-danger"><a style="color: white;" href="returnorder.php?order_id=' . $order['id'] . '">-</a></button></td>';
+                echo '<td><button class="btn btn-danger"><a style="color: white;" href="returnorder.php?order_id=' . $order['id'] . '">Return</a></button></td>';
             } else {
                 echo '<td>Not delivered yet</td>';
-                echo '<td><button class="btn btn-danger"><a style="color: white;" href="deleteorder.php?order_id=' . $order['id'] . '">-</a></button></td>';
+                echo '<td><button class="btn btn-danger"><a style="color: white;" href="deleteorder.php?order_id=' . $order['id'] . '">Cancel</a></button></td>';
                 echo '<td></td>';
             }
             

@@ -42,7 +42,7 @@ if(isset($_GET['do'])) {
             echo '<script type="text/javascript">
             var baseurl = window.location.origin;
                 var extra = "?do=1";
-                window.location = baseurl + "/school/wwi/orders.php" + extra;
+                window.location = baseurl + "/wwi/orders.php" + extra;
             </script>';
         } else {
             echo "Error deleting record: " . $link->error;
