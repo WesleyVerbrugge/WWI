@@ -1,5 +1,6 @@
 <?php include_once "header.php";
 
+
 if(isset($_GET['rs'])) {
 	echo '<div class="alert alert-success" role="alert">
 	Register succesful!

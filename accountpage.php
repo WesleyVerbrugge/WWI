@@ -28,6 +28,7 @@ try {
 
 
 <?php
+// controleerd of het wachtwoord zojuist geweizigd is en geeft dan een melding
 if(isset($_GET['pcs'])){
     if($_GET['pcs'] == 1){
         echo '<div class="alert alert-success" role="alert">
@@ -37,17 +38,22 @@ if(isset($_GET['pcs'])){
 }
 print ("<div>");
 
+    // controleerd of $_SESSION["user_data"] is geset. Deze wordt gevuld als er correct is ingelogd.
     if (isset($_SESSION["user_data"])) {
+        //sql query voor ophalen gegevens
         $sqlUserData = "SELECT * FROM users WHERE UserID = ?";
         $statementUserData = mysqli_prepare($connection, $sqlUserData);
 
+        // als er geen connectie plaats kan vinden met de database pakt de 'die' de error op.
         if (!$statementUserData) {
             die("mysqli error: " . mysqli_error($connection));
         }
+        // variable voor de array met op de plaats waar de key 0 is (de eerste in een array). bij deze key hoordt het userid waarmee de data van de user uit de database kan worden gehaald.
         $valueUser = $_SESSION["UserID"][0];
 
     //vult het itemID in bij de sql query
         mysqli_stmt_bind_param($statementUserData, "i", $valueUser);
+        // als de statement hierboven niet kan worden uitgevoerd wordt de error opgevangen door de die
         if (!mysqli_stmt_execute($statementUserData)) {
             die('stmt error: ' . mysqli_stmt_error($statementUserData));
         }
@@ -57,6 +63,7 @@ print ("<div>");
     //met $row kun je nu de item informatie ophalen
         $resultsUser = mysqli_fetch_array($resultsUserdata);
 
+        // variabelen voor data van de ingelogde user. deze data komt uit de database
         $firstNameUser = $resultsUser["Firstname"];
         $lastNameUser = $resultsUser["LastName"];
         $email = $resultsUser["Emailadress"];
@@ -66,12 +73,15 @@ print ("<div>");
         $housenumber = $resultsUser["Housenumber"];
         $postalcode = $resultsUser["Postalcode"];
         $city = $resultsUser["City"];
+        // kijkt of er bij het registreren een tussenvoegsel is ingevuld. als dat het geval is wordt deze weergegeven.
         if (!empty($resultsUser["Prepositions"])){
             $prepositions = $resultsUser["Prepositions"] . " ";
         } else {
+            // is er niks ingevuld bij het tussenvoegsel dan is het een lege string dat wordt weergegeven. Dit zie je uiteraard niet op de pagina.
             $prepositions = "";
         }
 
+        // het printen van alle bovenstaande variabelen
         print ($firstNameUser . " " . $prepositions . $lastNameUser . "<BR>");
         print ($country . "<BR>");
         print ($adress . " " .  $housenumber . "<BR>");
@@ -93,9 +103,11 @@ print ("<div>");
         $postalcodeUpdate = $_GET["postalcode"];
         $cityUpdate = $_GET["city"];
 
+        //update sql query
         $sqlUpdate = "UPDATE users SET Firstname = '$firstNameUserUpdate', Prepositions = '$prepositionsUpdate', LastName = '$lastNameUserUpdate', Emailadress = '$emailUpdate', Country = '$countryUpdate', City = '$cityUpdate', Adress = '$adressUpdate', Housenumber = '$housenumberUpdate', Postalcode = '$postalcodeUpdate', Phone = '$phoneUpdate' WHERE UserID = '$valueUser' ";
         $statementUpdate = mysqli_prepare($connection, $sqlUpdate);
 
+        // checked of de update query kan worden uitgevoerd of niet. zo niet vangt 'die' de error op
         if (!mysqli_stmt_execute($statementUpdate)) {
             die('stmt error: ' . mysqli_stmt_error($statementUpdate));
         }
@@ -106,9 +118,7 @@ print ("<div>");
 
 ?>
 
-        <!-- <div class="columnAccount"> -->
-        <!-- Button trigger modal -->
-        <!-- Modal -->
+       <!-- het update scherm met de bekende gegevens. deze bekende gegevens worden ingevuld in de input velden -->
         <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -163,6 +173,7 @@ print ("<div>");
                                 </label>
                             </div>
                     </div>
+                    <!-- buttons om je wijzigingen op te slaan of uit het scherm te gaan. -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" name="Submit-changes">Save changes</button>
@@ -172,6 +183,7 @@ print ("<div>");
             </div>
         </div>
 <BR><BR>
+    <!-- knoppen voor het update gegevens scherm, je bestellingen en naar het wachtwoord wijzigen scherm. -->
 </div>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update Account Details</button>
 <a class="btn btn-secondary" href="orders.php" style="margin-left: 3rem">Your orders</a>
@@ -182,7 +194,9 @@ print ("<div>");
 
 
 <?php
+// checked of de gebruiker is ingelogd
  if (isset($_SESSION["user_data"])){
+     //checked of de user een admin is
      if ($_SESSION["user_data"]["is_admin"] == 1){
          echo "<a class=\"btn btn-secondary\" href=\"ReturnedOrders.php\" style=\"margin-left: 3rem\">Returned Orders</a>";
      }

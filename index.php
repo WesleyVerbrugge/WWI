@@ -1,17 +1,20 @@
 <?php 
 session_start();
-include_once "header.php"; 
+include_once "header.php";
+// als er succesvol is ingelogd
 if(isset($_GET['ls'])){
     echo '<div class="alert alert-success" role="alert">
     Login successful!
   </div>';
 }
+// als er succesvol is ingelogd met een admin account
 if(isset($_GET['mls'])){
     if($_GET['mls'] == 1) {
         echo '<div class="alert alert-success" role="alert">
         Master Login successful!
         </div>';
     } else {
+        // als er niet goed is ingelogd met een admin account
         echo '<div class="alert alert-danger" role="alert">
         Master Login denied!
         </div>';
@@ -27,6 +30,7 @@ if(isset($_GET['na'])){
 ?>
 <body>
 <div class="container-fluid">
+    <!-- print de naam van de ingelogde user -->
     <div class="jumbotron"><h3 class="display-2">Welcome&nbsp;<?php if(isset($_SESSION['user_data'])){ print($_SESSION['user_data']['Firstname']);} ?></h3></div>
 </div>
 </body>
@@ -47,7 +51,7 @@ ORDER BY rand()
 LIMIT 3";
 
 
-
+// print de producen met foto, naam, prijs en een link naar de productpagina
 $result = mysqli_query($link, $sql);
 if ($result->num_rows > 0) {
     echo '<div class="container"><div class="row">';

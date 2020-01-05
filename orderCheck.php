@@ -73,6 +73,7 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
     mysqli_stmt_close($statement);
     mysqli_free_result($results);
 
+    // verzendkosten check
 if ($totaalBedrag < 50){
     $totaalBedrag = $totaalBedrag + 3.95;
 
@@ -166,11 +167,7 @@ if ($totaalBedrag < 50){
     <hr width="100%" class="float-left">
 
     <br>
-
-<?php
-
-?>
-
+<!-- start van PayPal en andere betaalmogelijkheden -->
 <script
         src="https://www.paypal.com/sdk/js?client-id=AQT1KXLO32aLVif7-yeL_OrFlKFLBfcicZsaF5lWTKSKlS3nMsNGu9MCWWm4LFy06QpusRHp_JfHzgvH"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
 </script>
@@ -183,6 +180,7 @@ if ($totaalBedrag < 50){
     <div id="paypal-button-container"></div>
 <input type="text" hidden id="totalprice" value="<?php print($totaalBedrag); ?>">
     <script>
+        // vult het te betalen bedrag in als te betalen bedrag
         var totalprice = document.getElementById("totalprice").value;
         paypal.Buttons({
             createOrder: function(data, actions) {
@@ -197,8 +195,6 @@ if ($totaalBedrag < 50){
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
                     window.location.href = "orders.php?oc=1";
-                    // alert('Transaction completed by ' + details.payer.name.given_name);
-                    // Call your server to save the transaction
                     return fetch('/paypal-transaction-complete', {
                         method: 'post',
                         headers: {

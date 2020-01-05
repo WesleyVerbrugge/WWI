@@ -1,5 +1,7 @@
 <?php
 include 'header.php';
+
+//checked of de user een admin is
 if($_SESSION['user_data']['is_admin'] == 1){
     $link = mysqli_connect("localhost", "root", "", "wideworldimporters");
     if ($link === false) {

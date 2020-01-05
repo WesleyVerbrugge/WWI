@@ -62,27 +62,7 @@ if (isset($_GET["azr"])){
             var term = $('#search').val();
         }
         console.log(term);
-    //     $('#search').bind("enterKey", function(e){
-    //         /* Get input value on change */
-    //         var Term = $('#search').val();
-    //         console.log(Term);
-    //         var resultDropdown = $(this).siblings(".result");
-    //         var searchchoice = $('#select').val();
-    //         var azr = $('#azr').val();
-    //         if(Term.length){
-    //             var baseurl = window.location.origin;
-    //             var extra = '?Term=' + Term + '&Schoice=' + searchchoice + '&azr=' + azr;
-    //             window.location = baseurl + '/wwi/backend-search.php' + extra;
-    //         } else{
-    //             resultDropdown.empty();
-    //         }
-        
-    //     // Set search input value on click of result item
-    //     // $(document).on("click", ".result p", function(){
-    //     //     $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-    //     //     $(this).parent(".result").empty();
-    //     // });
-    // });
+
 
     $('#button-addon2').on("click", function(e){
             /* Get input value on change */
@@ -95,12 +75,6 @@ if (isset($_GET["azr"])){
                 window.location = baseurl + '/wwi/backend-search.php' + extra;
             } else{
             }
-        
-        // Set search input value on click of result item
-        // $(document).on("click", ".result p", function(){
-        //     $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-        //     $(this).parent(".result").empty();
-        // });
     });
     
     $('input').keyup(function(e){
@@ -155,22 +129,20 @@ if (isset($_GET["azr"])){
             </li>
         </ul>
 
-<!--        <form class="form-inline my-lg-0 mx-auto">-->
+
             <div class="input-group" style="width: 25%; margin: auto; min-width: 250px">
                 <input type="text" class="form-control rounded-left" value="<?php if (isset($_GET["Term"])){print($_GET["Term"]);} ?>" placeholder="Browse Product" id="search" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-outline-success" type="button" id="button-addon2">Search</button>
                 </div>
             </div>
-            <!-- <input class="form-control mr-sm-2" id="search" type="text" autocomplete="off" placeholder="Zoek product" /> -->
-            <!-- <label for="select">Zoektype&nbsp;</label> -->
+
             <select style="display: none !important;" type="hidden" class="form-control" id="select">
                 <option value="aname">Artikelnaam</option>
                 <option value="anumbr">Artikelnummer</option>
             </select>&nbsp;
-            <!-- <label for="azr">hoeveelheid zoekresultaten&nbsp; </label> -->
+
             <input type="hidden" class="form-control" min="0" max="227" id="azr" value="25" />
-<!--        </form>-->
 
 
         <a href="shoppingcart.php" style="z-index: 1">
@@ -186,9 +158,7 @@ if (isset($_GET["azr"])){
         ';
         }
         ?>
-        <!--        <a>-->
-        <!--        <i class="fa fa-user-circle" style="font-size: 2.5em"></i>-->
-        <!--        </a>-->
+
         <ul class="navbar-nav mt-2 mt-lg-0">
             <li class="nav-item active">
                 <?php

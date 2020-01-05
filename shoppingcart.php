@@ -7,9 +7,9 @@ include "dbconnection.php";
 $connection = mysqli_connect("localhost", "root", "", "wideworldimporters", 3306);
 // var_dump($_SESSION['winkelwagen']);
 
+// checked of er een item is aangeklikt om uit de winkelwagen te verwijderen
 if(isset($_GET['delete_item_id'])){
     foreach($_SESSION['winkelwagen'] as $index => $item){
-        // var_dump($index);
         if($_GET['delete_item_id'] == $item['item_id']){
             unset($_SESSION['winkelwagen'][$index]);
             $_SESSION['winkelwagen'] = array_values($_SESSION['winkelwagen']);
@@ -27,15 +27,6 @@ if(isset($_GET['delete_item_id'])){
 
 <!-- header pagina -->
 <h2 class="margin-left">Shopping cart</h2>
-<?php
-
-//checked of knop voor legen winkelwagen geset is
-if (isset($_GET["LeegCart"])){
-    $_SESSION["winkelwagen"] = NULL;
-}
-
-
-?>
     <?php
     // checked of de winkelwagen leeg is
         if (empty($_SESSION["winkelwagen"])){
@@ -64,9 +55,6 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
 
     // pakt steeds het volgende nummer uit de winkelwagen array. Deze array bestaat uit de default key's en de value is het itemID.
     $value = $_SESSION["winkelwagen"][$i]['item_id'];
-    // foreach($_SESSION['winkelwagen'][$i] as $item){
-    //     $value = $item['item_id'];
-    // }
     //vult het itemID in bij de sql query
     mysqli_stmt_bind_param($statement, "i", $value);
     mysqli_stmt_execute($statement);
@@ -103,7 +91,6 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
                     </div>
             </td>
             <td data-th="Price">&#8364;<?php print ($prijs) ?></td>
-                <!-- prijs per stuk met een str_replace om een . naar een , te veranderen -->
             <!-- form om de aantallen te veranderen -->
             <td data-th="Quantity" style="text-align: center">
                 <form method="post">
@@ -117,7 +104,6 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
                             }
                             echo $_SESSION["winkelwagen"][$i]["quantity"];
                         }
-//                        $aantal = $_SESSION["winkelwagen"][$i]["quantity"];
                     }
 
                     ?>"></div>
@@ -155,23 +141,11 @@ for ($i = 0; $i < (count($_SESSION["winkelwagen"])); $i++) {
                 </tr>
                 </tfoot>
 </table>
-<p>
-            <!-- button voor het legen van de gehele winkelwagen
-            Deze knop is licht zichtbaar voor het debuggen
-            -->
-    <form class="margin-left" action="shoppingcart.php" method="get" style="opacity: 10%">
-        <input type="submit" name="LeegCart" value="leeg winkelwagen">
-    </form>
-</p>
-            <!-- knop die je naar de pagina voor het zien van je bestelling brengt -->
-<!--            <form class="margin-left" action="orderCheck.php">-->
-<!--                <input type="submit" name="orderCheck" value="bestellen">-->
-<!--            </form>-->
 <pre>
 <?php
 // sluit de for loop af
 }
-//    print_r($_SESSION["winkelwagen"]);
+
 ?>
 </pre>
 <script>

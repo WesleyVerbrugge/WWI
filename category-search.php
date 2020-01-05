@@ -14,12 +14,15 @@ try {
     echo "Could not count the products $e";
 }
 
+// maakt een variabele die de aangeklikt catergorie zo maakt dat het gebruikt kan worden in de database
 $category = '%' . $_POST['category'] . '%';
 $azr = $_POST['azr'];
+// checked of er een zoekopdracht is meegegeven vanuit de zoekbalk
 if(isset($_POST['term'])){
     $term = '%' . $_POST['term'] . '%';
 }
-$sql;
+
+// checked of $category is gemaakt
 if(!empty($category)) {
     if(!empty($term)){
     $link = mysqli_connect("localhost", "root", "", "wideworldimporters");
@@ -69,11 +72,6 @@ if ($stmt = mysqli_prepare($link, $sql)) {
         $result = mysqli_stmt_get_result($stmt);
         // Check number of rows in the result set
         if (mysqli_num_rows($result) > 0) {
-            // Fetch result rows as an associative array
-            // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            // while($row = $result->fetch_assoc()){
-            //     array_push($result_array, $row);
-            // }
             if (isset($azr)) {
                 $i = 1;
                 if ($azr == "max" || $azr > $aantalproducten || $azr < 1) {
@@ -101,8 +99,6 @@ if ($stmt = mysqli_prepare($link, $sql)) {
                     }
                 }
             }
-
-            // echo json_encode($result_array);
         } else {
             echo "<p>No matches found</p>";
         }
@@ -111,43 +107,3 @@ if ($stmt = mysqli_prepare($link, $sql)) {
         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
     }
 }
-// Close statement
-/*
-if (isset($_GET["azr"])) {
-            $azr = $_GET["azr"];
-            $i = 1;
-            if ($azr == "max" || $azr > $aantalproducten || $azr < 1) {
-                $azr = $aantalproducten;
-            }
-            if (isset($result)) {
-                foreach ($result as $row) {
-                    if ($i <= $azr) {
-                        ?>
-                        <div class="card producten" id="producten">
-                            <img src="<?php if (empty($row['image'])) {
-                                echo "images/img1.jpg";
-                            } else {
-                                echo $row['image'];
-                            } ?>" class="card-img-top" alt="Product Image">
-                            <div class="card-body card-body-text row" id="card-body">
-                                <h5 class="card-title"><?php echo $row["StockItemName"]; ?></h5>
-                                <div class="card-tekst"><p class="card-text"><?php
-                                        echo $row["MarketingComments"]; ?></p></div>
-                                <div><a href="showitem.php?item_id=<?php echo $row["StockItemID"] ?>"
-                                        class="btn btn-primary koop-knop">Bekijk Product</a>
-                                    <div class="product-price">
-                                        &#8364;&nbsp;<?php echo str_replace('.', ',', $row["RecommendedRetailPrice"]); ?></div>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                        $i++;
-                    }
-                }
-            } else {
-                $defURL = "index.php";
-                header('Location: ' . $defURL);
-            }
-        }
-        */
-        

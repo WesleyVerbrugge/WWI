@@ -16,16 +16,12 @@ if(isset($_GET['item_id'])){
   $q2->execute([$_GET['item_id']]);
   $q2 = $q2->fetchAll(PDO::FETCH_OBJ);
 
-  // $q3 = Database::GetDb()->prepare("SELECT COUNT(*) FROM reviews WHERE product_id like ?");
-  // $q3->execute([$_GET['item_id']]);
-  // $q3 = $q3->fetch(PDO::FETCH_OBJ);
-
   $q3 = count($q2);
 
     if (!isset($_SESSION["winkelwagen"])) {
         $_SESSION["winkelwagen"] = array();
     }
-//    print_r($_GET);
+
     if (isset($_GET["submitWinkelwagen"])) {
       $quantity = 1;
       
@@ -107,7 +103,6 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
         <!-- title, prijs, beschrijving aan de rechterkant van de pagina -->
         <p class="title"><?php echo $q->StockItemName ?></p>
         <p class="prijs">Price: &#8364; <?php echo $q->RecommendedRetailPrice; ?></p>
-<!--        <p>Shipping costs: &#8364; 3.95</p>-->
         <h1 class="margin-left">Product description</h1>
         <p class="margin-left"><?php echo $q->SearchDetails . "." ?></p>
         <br>
@@ -190,7 +185,6 @@ $sql_kortingPercentage = "SELECT DiscountPercentage FROM specialdeals WHERE Stoc
                     <div class="modal-body">
                     <form method="POST" action="showitem.php"></form>
                       <div class="form-group">
-<!--                        <label class="col-form-label" for="review">Review:</label>-->
                           <textarea class="form-control" id="review" name="review" style="height: 9rem"></textarea>
                       </div>
                       <input type="hidden" id="item_id" name="item_id" value="<?php echo $_GET['item_id']; ?>">

@@ -1,5 +1,6 @@
 <?php
 session_start();
+// wordt gechecked of de ingelogde gebruiker wel een admin is
 if(isset($_GET['id'])) {
     if(isset($_GET['item_id'])) {
         if($_SESSION['user_data']['is_admin'] == 0) {
